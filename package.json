@@ -1,0 +1,18 @@
+{
+  "name": "valhalla-admin",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "Ayhanexe",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "url": "https://github.com/0x21106/valhalla-admin.git"
+  },
+  "workspaces": [
+    "ui"
+  ],
+  "scripts": {
+    "start:dev": "cd ui && yarn start",
+    "start:build": "cd ui && yarn build"
+  }
+}
