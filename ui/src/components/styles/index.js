@@ -8,3 +8,4 @@ export * as ChatStyles from "./chat.styles";
 export * as RealtimeUsersStyles from "./realtime-users.styles";
 export * as TimeoutScreenStyles from "./timeoutScreen.styles";
 export * as LastActivitiesStyles from "./lastActivities.styles";
+export * as LoadingFilterStyles from "./loadingFilters.styles";

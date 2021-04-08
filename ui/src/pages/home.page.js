@@ -22,7 +22,7 @@ class HomePage extends Component {
         <div className="container-fluid p-0">
           <h1 className="h1 fw-bold mb-4 mt-4">Dashboard</h1>
 
-          {/* <div className="row">
+          <div className="row">
             <div className="col-12 col-sm-4">
               <SmallLineChart
                 title="Daily Visits"
@@ -61,7 +61,7 @@ class HomePage extends Component {
             <div className="col-5 my-2">
             <RealtimeUsersChart />
             </div>
-          </div> */}
+          </div>
           <div className="row mt-4">
             <div className="col-4">
               <LastActivities />

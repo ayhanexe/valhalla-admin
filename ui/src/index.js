@@ -10,6 +10,8 @@ import { store } from "./services";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/base.scss";
 
+require("dotenv").config();
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

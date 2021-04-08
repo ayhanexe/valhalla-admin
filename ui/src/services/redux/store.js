@@ -1,4 +1,4 @@
-import { createStore, compose, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { baseReducer } from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 
@@ -7,6 +7,8 @@ import { default as FontService } from "../fontService/fontService";
 import { default as ValhallaUtils } from "../utils/utils";
 import createSagaMiddleware from "redux-saga";
 import baseSaga from "./sagas";
+
+
 
 const fontService = new FontService();
 const themeService = new ThemeService();
@@ -54,10 +56,12 @@ const initialState = {
 
 const sagaMiddleware = createSagaMiddleware();
 
+const _composeWithDevtools = process.env.REACT_APP_VALHALLA_ENV === "development" ? compose(applyMiddleware(sagaMiddleware), composeWithDevTools()) : applyMiddleware(sagaMiddleware)
+
 const store = createStore(
   baseReducer,
   initialState,
-  compose(applyMiddleware(sagaMiddleware), composeWithDevTools())
+  _composeWithDevtools
 );
 
 sagaMiddleware.run(baseSaga);

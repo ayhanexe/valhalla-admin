@@ -110,10 +110,15 @@ export const ContainerWrapper = styled.div`
     grid-template-columns: 1fr`
       : null};
   }
-  
+  ${(props) =>
+    props.$width > triggerWidth
+      ? `
   @media (min-width: 700px) {
     grid-template-columns: minmax(150px, 0.4fr) 1fr;
   }
+  `
+      : null}
+  
 `;
 
 export const PeopleArea = styled.div`
