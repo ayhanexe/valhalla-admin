@@ -81,7 +81,7 @@ class Chat extends Component {
     super(props);
     this.valhallaUtils = new ValhallaUtils();
 
-    this.triggerWidth = 470;
+    this.triggerWidth = 500;
 
     this.containerWrapperRef = createRef();
     this.peopleAreaRef = createRef();

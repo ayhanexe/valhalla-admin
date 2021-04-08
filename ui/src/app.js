@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Header, LeftSidebar, RightSidebar, TimeoutScreen } from "./components";
+import {
+  Header,
+  LeftSidebar,
+  RightSidebar,
+  TimeoutScreen,
+  CustomScrollbar,
+} from "./components";
 import { Switch, Route } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components/macro";
 import { ThemeService, FontService } from "./services";
@@ -22,7 +28,7 @@ const Container = styled.div`
   font-weight: ${(props) => String(props.$fontWeight).toLowerCase()};
   font-size: ${(props) => String(props.$fontSize).toLowerCase()};
   ${({ theme }) => theme.body}
-  padding: 0 2vmax 60px 2vmax;
+  padding: 0 2vmax 0 2vmax;
   overflow-x: hidden;
   overflow-y: auto;
 `;
@@ -30,7 +36,8 @@ const Container = styled.div`
 const AppContent = styled.div`
   width: 100%;
   height: 100%;
-  padding-bottom:50px;
+  overflow:hidden;
+  padding-bottom:60px;
 `;
 
 class App extends Component {
@@ -55,13 +62,15 @@ class App extends Component {
           <LeftSidebar />
           <AppContent id="app-content">
             <Header />
-            <React.Suspense fallback={<p>Loading...</p>}>
-              <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route path="/test" component={TestPage} />
-                <Route path="/valhalla-chat" component={ValhallaChatPage} />
-              </Switch>
-            </React.Suspense>
+            <CustomScrollbar >
+              <React.Suspense fallback={<p>Loading...</p>}>
+                <Switch>
+                  <Route exact path="/" component={HomePage} />
+                  <Route path="/test" component={TestPage} />
+                  <Route path="/valhalla-chat" component={ValhallaChatPage} />
+                </Switch>
+              </React.Suspense>
+            </CustomScrollbar>
           </AppContent>
           <RightSidebar />
         </Container>

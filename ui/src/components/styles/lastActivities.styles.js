@@ -17,8 +17,9 @@ export const Container = styled.div`
     "title"
     "items";
 
+  margin:20px 0;
+    
   position: relative;
-  box-shadow:0 0 5px 0 rgba(0, 0, 0, 0.2);
 `;
 
 export const Title = styled.span`
@@ -45,7 +46,9 @@ export const ActivityContent = styled.div`
 
   grid-area: "items";
 
-  overflow: auto;
+  overflow: hidden;
+  
+  padding:0 15px 0 0;
 `;
 
 export const ActivityItemContainer = styled.div`

@@ -11,4 +11,5 @@ export { default as Chat } from "./chat/chat";
 export { default as RealtimeUsersChart } from "./realtime-users-chart/realtime-users-chart";
 export { default as TimeoutScreen } from "./timeoutScreen/timeoutScreen";
 export { default as LastActivities } from "./lastActivities/lastActivities";
+export { default as CustomScrollbar } from "./customScrollbar/customScrollbar";
 export * as LoadingFilters from "./loadingFilters/loadingFilters";

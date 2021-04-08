@@ -15,6 +15,9 @@ class SagaUtils {
   get app() {
     return document.querySelector("#app-content");
   }
+  get appContainer() {
+    return document.querySelector("#app-container");
+  }
   get leftSidebar() {
     return document.querySelector("#left-sidebar");
   }
@@ -176,7 +179,9 @@ function* closeLeftSidebar() {
           ease: utils.state.leftSidebarClosingEase,
           duration: utils.state.leftSidebarClosingDuration,
         }),
-        state.toggleFixedLeftSidebar && state.isLeftSidebarOpen && utils.app.classList.contains("fixed-left-sidebar-toggled")
+        state.toggleFixedLeftSidebar &&
+        state.isLeftSidebarOpen &&
+        utils.app.classList.contains("fixed-left-sidebar-toggled")
           ? gsap
               .to(utils.app, {
                 width: `+=${leftSidebar.clientWidth}`,
@@ -184,9 +189,10 @@ function* closeLeftSidebar() {
                 duration: state.leftSidebarClosingDuration,
                 ease: "power.out",
               })
-              .then(() =>
-                utils.app.classList.remove("fixed-left-sidebar-toggled")
-              )
+              .then(() => {
+                valhallaUtils.clearStyles(utils.app);
+                utils.app.classList.remove("fixed-left-sidebar-toggled");
+              })
           : null,
       ])
       .then(() => {
@@ -198,6 +204,9 @@ function* closeLeftSidebar() {
         }
         if (utils.app) {
           valhallaUtils.clearStyles(utils.app);
+        }
+        if (utils.appContainer) {
+          valhallaUtils.clearStyles(utils.appContainer);
         }
       });
 

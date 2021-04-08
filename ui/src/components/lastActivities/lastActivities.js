@@ -1,5 +1,5 @@
 import React, { Component, createRef } from "react";
-import { LoadingFilters } from "..";
+import { LoadingFilters, CustomScrollbar } from "..";
 
 import { LastActivitiesStyles as s } from "../styles";
 
@@ -68,15 +68,19 @@ class lastActivities extends Component {
           <LoadingFilters.StandartFilter />
         ) : null}
         <s.Title>Last Activities</s.Title>
-        <s.ActivityContent>
-          {this.state.activities.map((activity, index) => (
-            <s.ActivityItemContainer key={index}>
-              <s.ActivityItemProfile image={activity.user.picture.thumbnail} />
-              <s.ActivityItemText>{activity.text}</s.ActivityItemText>
-              <s.ActivityItemTime>{activity.time}</s.ActivityItemTime>
-            </s.ActivityItemContainer>
-          ))}
-        </s.ActivityContent>
+        <CustomScrollbar autoHeight autoHeightMin="100%">
+          <s.ActivityContent>
+            {this.state.activities.map((activity, index) => (
+              <s.ActivityItemContainer key={index}>
+                <s.ActivityItemProfile
+                  image={activity.user.picture.thumbnail}
+                />
+                <s.ActivityItemText>{activity.text}</s.ActivityItemText>
+                <s.ActivityItemTime>{activity.time}</s.ActivityItemTime>
+              </s.ActivityItemContainer>
+            ))}
+          </s.ActivityContent>
+        </CustomScrollbar>
       </s.Container>
     );
   }

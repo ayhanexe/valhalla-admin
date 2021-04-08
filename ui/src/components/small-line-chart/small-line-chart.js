@@ -148,7 +148,6 @@ class SmallChart extends Component {
         padding: {
           bottom: -10,
           left: -10,
-          top: this.state.paddingTop,
         },
       },
       scales: {
@@ -177,14 +176,14 @@ class SmallChart extends Component {
 
     return (
       <s.Container ref={this.ref} className="small-line-chart">
-        <s.SettingsContainer>
+        {/* <s.SettingsContainer>
           <s.IconContainer onClick={(event) => this.openPopup(event)}>
             <s.SettingsIcon />
             <s.PopupContainer className="popup-container">
               <s.PopupItem>Edit</s.PopupItem>
             </s.PopupContainer>
           </s.IconContainer>
-        </s.SettingsContainer>
+        </s.SettingsContainer> */}
         <s.ContainerContent>
           <s.ContainerTitle>{this.props.title ?? ""}</s.ContainerTitle>
           <s.ContainerValue
@@ -202,7 +201,9 @@ class SmallChart extends Component {
             {this.props.value ?? 0}
           </s.ContainerValue>
         </s.ContainerContent>
-        <Line data={data} options={options} />
+        <s.ChartContainer>
+          <Line data={data} options={options} />
+        </s.ChartContainer>
       </s.Container>
     );
   }

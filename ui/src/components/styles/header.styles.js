@@ -18,8 +18,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 0;
-  margin: 0 0 10px 0;
+  margin: 10px 0 0 0;
 `;
 
 export const Header = styled.div`

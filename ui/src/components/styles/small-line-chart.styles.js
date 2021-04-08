@@ -11,13 +11,13 @@ const GearSVG = (props) => (
 );
 
 export const Container = styled.div`
-  min-width: 100px;
+  width:100%;
   height: 13vmax;
   background-color: #090b14;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
-  margin: 10px 0;
+  margin: 20px 0;
   z-index: 0;
   @media (max-width: 575px) {
     height: 20vmax;
@@ -71,6 +71,16 @@ export const SettingsContainer = styled.div`
 `;
 
 export const IconContainer = styled.div``;
+
+export const ChartContainer = styled.div`
+  width:100%;
+  height:50%;
+  backgound-color:blue;
+  
+  position:absolute;
+  bottom:0;
+  left:0;
+`;
 
 export const SettingsIcon = styled(GearSVG)`
   width: 14px;

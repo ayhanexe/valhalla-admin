@@ -74,7 +74,7 @@ const PeopleSVG = (props) => (
   </svg>
 );
 
-const triggerWidth = 470;
+const triggerWidth = 500;
 
 export const Container = styled.div`
   min-width: 100px;
