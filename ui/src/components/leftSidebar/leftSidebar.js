@@ -41,6 +41,11 @@ class LeftSidebar extends Component {
               isLink: true,
               to: "/valhalla-chat",
             },
+            {
+              text: "File System",
+              isLink: true,
+              to: "/file-system",
+            },
           ]}
         />
 

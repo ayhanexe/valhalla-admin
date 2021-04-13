@@ -47,6 +47,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   z-index:10;
+  box-shadow:0 0 5px 0 rgba(0, 0, 0, 0.2);
+  
   @media (min-width: 1441px) {
     width: calc(400px + 10vmax);
     ${(props) =>
@@ -72,6 +74,8 @@ export const Toggler = styled.div`
   justify-content: center;
   align-items: center;
   transition: right 0.3s ease-out;
+  box-shadow:2px 0 2px 0 rgba(0, 0, 0, 0.1);
+  
   @media (min-width: 1441px) {
     width: calc(20px + 0.5vmax);
     height: calc(35px + 0.5vmax);

@@ -83,6 +83,7 @@ export const Container = styled.div`
   padding: 5px;
   border-radius: 10px;
   position: relative;
+  
   &.full-screen {
     width: 100%;
     height: 100%;

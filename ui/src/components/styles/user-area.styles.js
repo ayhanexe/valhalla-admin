@@ -50,6 +50,7 @@ export const Dropdown = styled.div`
   position:absolute;
   top:100%;
   right:0;
+  z-index:1;
 `;
 
 export const DropdownHeader = styled.div`
@@ -81,7 +82,7 @@ const DropdownItemBase = css`
   width: 90%;
   font-size: 0.6em;
   background: ${({ theme }) => theme.userArea.dropdownItemBackground};
-  color: white;
+  color: white !important;
   text-decoration: none;
   padding: 5px 20px;
   display: flex;

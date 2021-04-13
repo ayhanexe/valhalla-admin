@@ -11,6 +11,7 @@ class timeoutScreen extends Component {
     super(props);
     this.lockScreenRef = createRef();
     this.filterRef = createRef();
+    this.mediaFilterRef = createRef();
     this.unlockAreaRef = createRef();
 
     this.valhallaUtils = new ValhallaUtils();
@@ -63,7 +64,7 @@ class timeoutScreen extends Component {
         opacity: 0.1,
       })
       .then(() => {
-        this.valhallaUtils.clearStyles(targetNotification)
+        this.valhallaUtils.clearStyles(targetNotification);
         const newNotifications = this.state.notifications?.filter((item) =>
           item.id === itemId ? false : item
         );
@@ -224,6 +225,7 @@ class timeoutScreen extends Component {
     return new Promise((resolve, reject) => {
       try {
         const filter = this.filterRef.current;
+        const mediaFilter = this.mediaFilterRef.current;
         const timeline = gsap.timeline();
 
         timeline
@@ -231,14 +233,25 @@ class timeoutScreen extends Component {
             gsap.fromTo(
               filter,
               {
-                backdropFilter: "blur(0px)",
+                filter: "blur(0px)",
               },
               {
-                backdropFilter: "blur(10px)",
-                duration: 1,
+                filter: "blur(10px)",
+                duration: 0.3,
                 ease: "power.out",
               }
             ),
+            gsap.fromTo(
+              mediaFilter,
+              {
+                opacity:0,
+              },
+              {
+                opacity:1,
+                duration:0.4,
+                ease:"power.out"
+              }
+            )
           ])
           .then(() => {
             filter.classList.add("active");
@@ -253,6 +266,7 @@ class timeoutScreen extends Component {
     return new Promise((resolve, reject) => {
       try {
         const filter = this.filterRef.current;
+        const mediaFilter = this.mediaFilterRef.current;
         const timeline = gsap.timeline();
 
         timeline
@@ -260,14 +274,25 @@ class timeoutScreen extends Component {
             gsap.fromTo(
               filter,
               {
-                backdropFilter: "blur(10px)",
+                filter: "blur(10px)",
               },
               {
-                backdropFilter: "blur(0px)",
-                duration: 1,
+                filter: "blur(0px)",
+                duration: 0.3,
                 ease: "power.out",
               }
             ),
+            gsap.fromTo(
+              mediaFilter,
+              {
+                opacity:1,
+              },
+              {
+                opacity:0,
+                duration:0.4,
+                ease:"power.out"
+              }
+            )
           ])
           .then(() => {
             filter.classList.remove("active");
@@ -280,15 +305,18 @@ class timeoutScreen extends Component {
 
   async toggleFilter() {
     const filter = this.filterRef.current;
-    const isFilterActive = filter.classList.contains("active");
-    if (isFilterActive) {
-      await this.deactivateFilter().catch((error) => {
-        throw new Error(error);
-      });
-    } else {
-      await this.activateFilter().catch((error) => {
-        throw new Error(error);
-      });
+    const mediaFilter = this.mediaFilterRef.current;
+    if (filter && mediaFilter) {
+      const isFilterActive = filter.classList.contains("active");
+      if (isFilterActive) {
+        await this.deactivateFilter().catch((error) => {
+          throw new Error(error);
+        });
+      } else {
+        await this.activateFilter().catch((error) => {
+          throw new Error(error);
+        });
+      }
     }
   }
 
@@ -477,79 +505,98 @@ class timeoutScreen extends Component {
       <s.Container
         id="lock-screen"
         ref={this.lockScreenRef}
-        $image={`${process.env.PUBLIC_URL}/assets/media/images/timeout-screen-1.gif`}
         $isLockScreenOpen={this.props.isLockScreenOpen}
       >
         <s.Content>
-          <s.Filter ref={this.filterRef}>
-            <s.ClockContainer className="no-select">
-              <s.Hour>{this.state.clock.hour}</s.Hour>
-              <s.Minute>:{this.state.clock.minute}</s.Minute>
-            </s.ClockContainer>
+          <s.BackgroundMediaContainer
+            mediaUrl={`${process.env.PUBLIC_URL}/assets/media/images/timeout-screen-1.gif`}
+          >
+            <s.BackgroundMediaWrapper>
+              <s.BackgroundMedia ref={this.filterRef}></s.BackgroundMedia>
+              <s.BackgroundMediaFilter ref={this.mediaFilterRef}></s.BackgroundMediaFilter>
+              {/* <s.BackgroundMedia
+                type={"image"}
+                mediaUrl={`${process.env.PUBLIC_URL}/assets/media/images/timeout-screen-1.gif`}
+              /> */}
+            </s.BackgroundMediaWrapper>
+          </s.BackgroundMediaContainer>
 
-            <s.NotificationsContainer>
-              <s.NotificationsContent>
-                {this.state.notifications?.map((item, index) => {
-                  return (
-                    <s.NotificationItemContainer
-                      key={index}
-                      data-notification-id={item.id}
-                      className="notification-item-container"
+          {/* <s.BackgroundMedia>
+            <s.BackgroundMediaWrapper>
+              <s.BackgroundMediaWrapperFilter
+                ref={this.filterRef}
+                src={`${process.env.PUBLIC_URL}/assets/media/images/timeout-screen-1.gif`}
+              />
+            </s.BackgroundMediaWrapper>
+          </s.BackgroundMedia> */}
+
+          <s.ClockContainer className="no-select">
+            <s.Hour>{this.state.clock.hour}</s.Hour>
+            <s.Minute>:{this.state.clock.minute}</s.Minute>
+          </s.ClockContainer>
+
+          <s.NotificationsContainer>
+            <s.NotificationsContent>
+              {this.state.notifications?.map((item, index) => {
+                return (
+                  <s.NotificationItemContainer
+                    key={index}
+                    data-notification-id={item.id}
+                    className="notification-item-container"
+                  >
+                    <s.NotificationItem
+                      ref={item.ref}
+                      className="notification-item"
                     >
-                      <s.NotificationItem
-                        ref={item.ref}
-                        className="notification-item"
-                      >
-                        <s.NotificationItemHeader>
-                          <s.NotificationItemIconArea>
-                            {this.getNotificationItemIcon(item.type)}
-                          </s.NotificationItemIconArea>
-                          <s.NotificationItemTitleArea>
-                            <s.NotificationItemTitle>
-                              {item.title}
-                            </s.NotificationItemTitle>
-                          </s.NotificationItemTitleArea>
-                          <s.NotificationItemTimeArea>
-                            {this.getTime(item.timestamp)}
-                          </s.NotificationItemTimeArea>
-                        </s.NotificationItemHeader>
-                        <s.NotificationItemContent className="notification-item-content">
-                          <s.NotificationItemContentText className="notification-item-content-text">
-                            {item.text}
-                          </s.NotificationItemContentText>
-                        </s.NotificationItemContent>
-                      </s.NotificationItem>
-                      {this.calculateNotificationItemHeight(item.ref.current) >
-                      83 ? (
-                        <s.NotificationItemExpandToggler
-                          onClick={(event) => this.toggleExpandMessage(item.id)}
-                          className="notification-expand-toggler"
-                          $isExpanded={item.isExpanded}
-                        />
-                      ) : null}
-                      <s.NotificationItemDeleteIconContainer
-                        onClick={(event) => this.deleteNotification(item.id)}
-                        className="notification-item-delete-button"
-                      >
-                        <s.NotificationItemDeleteIcon />
-                      </s.NotificationItemDeleteIconContainer>
-                    </s.NotificationItemContainer>
-                  );
-                })}
-              </s.NotificationsContent>
-            </s.NotificationsContainer>
+                      <s.NotificationItemHeader>
+                        <s.NotificationItemIconArea>
+                          {this.getNotificationItemIcon(item.type)}
+                        </s.NotificationItemIconArea>
+                        <s.NotificationItemTitleArea>
+                          <s.NotificationItemTitle>
+                            {item.title}
+                          </s.NotificationItemTitle>
+                        </s.NotificationItemTitleArea>
+                        <s.NotificationItemTimeArea>
+                          {this.getTime(item.timestamp)}
+                        </s.NotificationItemTimeArea>
+                      </s.NotificationItemHeader>
+                      <s.NotificationItemContent className="notification-item-content">
+                        <s.NotificationItemContentText className="notification-item-content-text">
+                          {item.text}
+                        </s.NotificationItemContentText>
+                      </s.NotificationItemContent>
+                    </s.NotificationItem>
+                    {this.calculateNotificationItemHeight(item.ref.current) >
+                    83 ? (
+                      <s.NotificationItemExpandToggler
+                        onClick={(event) => this.toggleExpandMessage(item.id)}
+                        className="notification-expand-toggler"
+                        $isExpanded={item.isExpanded}
+                      />
+                    ) : null}
+                    <s.NotificationItemDeleteIconContainer
+                      onClick={(event) => this.deleteNotification(item.id)}
+                      className="notification-item-delete-button"
+                    >
+                      <s.NotificationItemDeleteIcon />
+                    </s.NotificationItemDeleteIconContainer>
+                  </s.NotificationItemContainer>
+                );
+              })}
+            </s.NotificationsContent>
+          </s.NotificationsContainer>
 
-            <s.ScrollToUnlockContainer
-              ref={this.unlockAreaRef}
-              className="no-select"
-              onMouseDown={(event) => this.unlockAreaMouseDownRef(event)}
-              onMouseUp={(event) => this.unlockAreaMouseFailRef(event)}
-              onMouseLeave={(event) => this.unlockAreaMouseFailRef(event)}
-            >
-              <s.MouseIcon />
-              <s.UnlockText>Swipe Up To Unlock</s.UnlockText>
-            </s.ScrollToUnlockContainer>
-          </s.Filter>
+          <s.ScrollToUnlockContainer
+            ref={this.unlockAreaRef}
+            className="no-select"
+            onMouseDown={(event) => this.unlockAreaMouseDownRef(event)}
+            onMouseUp={(event) => this.unlockAreaMouseFailRef(event)}
+            onMouseLeave={(event) => this.unlockAreaMouseFailRef(event)}
+          >
+            <s.MouseIcon />
+            <s.UnlockText>Swipe Up To Unlock</s.UnlockText>
+          </s.ScrollToUnlockContainer>
         </s.Content>
       </s.Container>
     );

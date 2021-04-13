@@ -36,13 +36,6 @@ export const Container = styled.div`
   position: fixed;
   top: ${(props) => (props.$isLockScreenOpen ? "0" : "-100vh")};
   left: 0;
-  background: #090b14 url("${(props) => props.$image}") center no-repeat;
-  background-size: cover;
-
-  // display: fixed;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
   z-index: 9999999999;
 `;
@@ -52,19 +45,6 @@ export const Content = styled.div`
   height: 100%;
   position: relative;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Filter = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-
-  background-color: rgba(0, 0, 0, 0.3);
-
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.5fr 1fr 0.3fr;
@@ -73,9 +53,68 @@ export const Filter = styled.div`
     "clock"
     "notifications"
     "scroll-area";
+  position: relative;
 
   @media (max-height: 290px) {
     grid-template-rows: 0.5fr 1fr 0px;
+  }
+`;
+
+export const BackgroundMediaContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+
+  background: url(${(props) => props.mediaUrl}) center no-repeat;
+  background-size: cover;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+`;
+
+export const BackgroundMediaWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  background-size: cover;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  overflow: hidden;
+`;
+
+export const BackgroundMedia = styled.div`
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  background-size: cover;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  box-shadow: inset 0 0 100vw rgba(0, 0, 0, 0.5);
+`;
+
+export const BackgroundMediaFilter = styled.div`
+  width: 200%;
+  height: 100%;
+  background: radial-gradient(transparent 20%, rgba(0, 0, 0, 0.3) 100%);
+  position: absolute;
+  top: 0;
+  left: -50%;
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(transparent 20%, rgba(0, 0, 0, 0.3) 100%);
+    transform: rotateZ(90deg);
   }
 `;
 
@@ -88,7 +127,7 @@ export const ClockContainer = styled.div`
 
 export const ClockValueBase = css`
   font-size: 7vw;
-  font-weight: 700;
+  font-weight: 400;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 `;
 
@@ -248,22 +287,22 @@ export const NotificationItemInfoIcon = styled(InfoSVG)`
 export const NotificationItemDeleteIconContainer = styled.div`
   width: 30px;
   height: 100%;
-    position: absolute;
+  position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  
-  margin:0;
-  padding:0;
-  
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  margin: 0;
+  padding: 0;
+
   opacity: 0;
   visibility: hidden;
-  
+
   transition: opacity 0.3s ease-out, visibility 0.3s ease-out,
     right 0.15s ease-out;
 `;

@@ -11,7 +11,7 @@ const UpSVG = (props) => (
 );
 
 export const Container = styled.div`
-  min-width: 100px;
+  width: 100%;
   height: 22vw;
   background-color: #05070c;
   border-radius: 10px;
@@ -61,8 +61,8 @@ export const Value = styled.span`
   font-size: 1.75vw;
   font-weight: 800;
   color: #be283c;
-  @media (max-width:800px) {
-    font-size:1em;
+  @media (max-width: 800px) {
+    font-size: 1em;
   }
 `;
 

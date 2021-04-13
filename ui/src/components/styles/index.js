@@ -10,3 +10,4 @@ export * as TimeoutScreenStyles from "./timeoutScreen.styles";
 export * as LastActivitiesStyles from "./lastActivities.styles";
 export * as LoadingFilterStyles from "./loadingFilters.styles";
 export * as CustomScrollbarStyles from "./customScrollbar.styles";
+export * as WeatherWidgetStyles from "./weatherWidget.styles";

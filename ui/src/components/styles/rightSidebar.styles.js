@@ -24,6 +24,8 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.rightSidebar.backgroundColor};
   color: ${({ theme }) => theme.rightSidebar.color};
   padding: 15px 25px 0 25px;
+  box-shadow:0 0 5px 0 rgba(0, 0, 0, 0.2);
+  
   z-index: 10;
   @media (min-width: 1441px) {
     width: calc(400px + 10vmax);
@@ -55,6 +57,8 @@ export const Toggler = styled.div`
   justify-content: center;
   align-items: center;
   transition: left 0.3s ease-out;
+  box-shadow:-2px 0 2px 0 rgba(0, 0, 0, 0.1);
+  
   @media (min-width: 1441px) {
     width: calc(20px + 0.5vmax);
     height: calc(35px + 0.5vmax);

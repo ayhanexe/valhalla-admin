@@ -12,69 +12,16 @@ class SmallChart extends Component {
 
     this.utils = new ValhallaUtils();
     this.isPopupOpen = false;
-    this.background = this.generateBackground();
+    this.background = this.utils.generateBackground(this.props.options ?? {});
     this.ref = createRef();
     this.state = {};
 
-    this.validateData(this.props.data);
+    this.utils.validateChartData(this.props.data);
   }
 
-  openPopup(event) {
-    const target = event.target;
-    const popup = this.utils.closest(target, ".popup-container");
+  
 
-    gsap
-      .set(popup, {
-        opacity: this.isPopupOpen ? 0 : 1,
-        visibility: this.isPopupOpen ? "hidden" : "visible",
-        height: this.isPopupOpen ? 0 : this.utils.calculateDropdown(popup),
-      })
-      .then(() => {
-        this.isPopupOpen = !this.isPopupOpen;
-      });
-  }
-
-  validateData(data) {
-    if (Array.isArray(data)) {
-      for (let i = 0; i < data.length; i++) {
-        if (isNaN(parseInt(data[i]))) {
-          throw new Error(
-            'Data\'s content must be only number! or string number like "321"'
-          );
-        }
-      }
-      return true;
-    } else {
-      throw Error("Data's type must be array!");
-    }
-  }
-
-  generateBackground() {
-    const gradients = [
-      ["#FF3254", "rgba(255,123,0, 0.25)"],
-      ["#FF622D", "rgba(255,224,50, 0.25)"],
-      ["#BCFF05", "rgba(65,255,100, 0.25)"],
-      ["#41FF64", "rgba(0,242,255, 0.25)"],
-      ["#00F2FF", "rgba(30,97,2550, 0.25)"],
-      ["#1E61FF", "rgba(128,10,255, 0.25)"],
-      ["#800AFF", "rgba(213,5,255, 0.25)"],
-      ["#D505FF", "rgba(255,75,147, 0.25)"],
-      ["#FF4B93", "rgba(255,50,64, 0.25)"],
-    ];
-    if (!this.props.options?.gradientBackground) {
-      if (this.props.options?.fill) {
-        this.valueColor = this.props.options.fill;
-        return this.props.options.fill;
-      } else {
-        this.valueColor = "whitesmoke";
-        return "whitesmoke";
-      }
-    } else {
-      const color = gradients[Math.floor(Math.random() * gradients.length)];
-      this.valueColor = color;
-      return color;
-    }
-  }
+  
 
   updateState() {
     const refStyles = window.getComputedStyle(this.ref.current);
@@ -188,14 +135,14 @@ class SmallChart extends Component {
           <s.ContainerTitle>{this.props.title ?? ""}</s.ContainerTitle>
           <s.ContainerValue
             style={
-              Array.isArray(this.valueColor)
+              Array.isArray(this.background)
                 ? {
-                    background: `linear-gradient(90deg, ${this.valueColor[0]}, ${this.valueColor[1]})`,
+                    background: `linear-gradient(90deg, ${this.background[0]}, ${this.background[1]})`,
                     color: "transparent",
                     backgroundClip: "text",
                     WebkitBackgroundClip: "text",
                   }
-                : { color: this.valueColor }
+                : { color: this.background }
             }
           >
             {this.props.value ?? 0}

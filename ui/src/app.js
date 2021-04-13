@@ -13,7 +13,8 @@ import { ThemeService, FontService } from "./services";
 
 const HomePage = React.lazy(() => import("./pages/home.page")),
   TestPage = React.lazy(() => import("./pages/test.page")),
-  ValhallaChatPage = React.lazy(() => import("./pages/valhalla-chat.page"));
+  ValhallaChatPage = React.lazy(() => import("./pages/valhalla-chat.page")),
+  FileSystemPage = React.lazy(() => import("./pages/fileSystem.page"));
 
 const themeService = new ThemeService();
 
@@ -36,8 +37,8 @@ const Container = styled.div`
 const AppContent = styled.div`
   width: 100%;
   height: 100%;
-  overflow:hidden;
-  padding-bottom:60px;
+  overflow: hidden;
+  padding-bottom: 60px;
 `;
 
 class App extends Component {
@@ -62,12 +63,13 @@ class App extends Component {
           <LeftSidebar />
           <AppContent id="app-content">
             <Header />
-            <CustomScrollbar >
+            <CustomScrollbar>
               <React.Suspense fallback={<p>Loading...</p>}>
                 <Switch>
                   <Route exact path="/" component={HomePage} />
                   <Route path="/test" component={TestPage} />
                   <Route path="/valhalla-chat" component={ValhallaChatPage} />
+                  <Route path="/file-system" component={FileSystemPage} />
                 </Switch>
               </React.Suspense>
             </CustomScrollbar>
