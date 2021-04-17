@@ -12,7 +12,7 @@
     "ui"
   ],
   "scripts": {
-    "start:dev": "cd ui && yarn start",
+    "start:dev": "cd ui && set ($env:HTTPS=true) && react-scripts start",
     "start:build": "cd ui && yarn build"
   }
 }

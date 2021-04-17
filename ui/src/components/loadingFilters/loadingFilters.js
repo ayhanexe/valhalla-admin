@@ -1,4 +1,3 @@
-import { gsap } from "gsap/all";
 import React, { Component, createRef } from "react";
 import { LoadingFilterStyles as s } from "../styles";
 

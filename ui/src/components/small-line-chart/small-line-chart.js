@@ -1,7 +1,6 @@
 import { Component, createRef } from "react";
 import { connect } from "react-redux";
 import { ValhallaUtils } from "../../services";
-import gsap from "gsap/all";
 
 import { Line } from "react-chartjs-2";
 import { SmallChartStyles as s } from "../styles";

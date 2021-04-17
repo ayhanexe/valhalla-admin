@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react";
+import React, { Component } from "react";
 import { LoadingFilters, CustomScrollbar } from "..";
 
 import { LastActivitiesStyles as s } from "../styles";

@@ -8,14 +8,26 @@ export default class ValhallaUtils {
   closest(element, query) {
     while (element && element.parentNode) {
       element = element.parentNode;
-      const q = element.querySelector(query);
+      if (element.classList.contains(query.substr(1, query.length))) {
+        return element;
+      } else {
+        const q = element.querySelector(query);
 
-      if (q) {
-        return q;
+        if (q) {
+          return q;
+        }
       }
     }
 
     return null;
+  }
+
+  closestChild(element, query) {
+    for (let i of element.children) {
+      if (i.classList.contains(query)) {
+        return i;
+      }
+    }
   }
 
   calculateDropdown(dropdown) {
