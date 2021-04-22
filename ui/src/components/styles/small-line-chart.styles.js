@@ -24,6 +24,10 @@ export const ContainerTitle = styled.span`
   font-weight: 900;
   mix-blend-mode: exclusion;
   white-space: nowrap;
+  
+  @media (max-width:576px) {
+    font-size:4vw;
+  }
 `;
 
 export const ContainerValue = styled.span`
@@ -33,6 +37,10 @@ export const ContainerValue = styled.span`
   position: relative;
   bottom: 0.5vmax;
   white-space: nowrap;
+  
+  @media (max-width:576px) {
+    font-size:4vw;
+  }
 `;
 
 export const SettingsContainer = styled.div`
