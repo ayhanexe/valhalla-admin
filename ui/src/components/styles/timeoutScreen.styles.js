@@ -46,8 +46,8 @@ export const Content = styled.div`
   position: relative;
 
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: 1fr 1fr 0.3fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 0.6fr;
   gap: 0px 0px;
   grid-template-areas:
     "clock"
@@ -351,7 +351,7 @@ export const ScrollToUnlockContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 1.5vw 0 0 0;
-  margin:0 0 auto 0;
+  margin: 0 0 auto 0;
 
   display: flex;
   flex-direction: column;
