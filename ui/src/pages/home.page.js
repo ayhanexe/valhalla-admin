@@ -89,7 +89,7 @@ const Container = styled.div`
     .chart-two,
     .chart-three {
       border-radius: 0.5srem;
-      --bs-aspect-ratio: 20%;
+      --bs-aspect-ratio: 40%;
     }
     .realtime-chart {
       --bs-aspect-ratio: 35%;
