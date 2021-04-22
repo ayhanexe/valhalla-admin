@@ -46,7 +46,7 @@ export const Content = styled.div`
   position: relative;
 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 0.5fr 1fr 0.3fr;
   gap: 0px 0px;
   grid-template-areas:
@@ -61,8 +61,8 @@ export const Content = styled.div`
 `;
 
 export const BackgroundMediaContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 
   background: url(${(props) => props.mediaUrl}) center no-repeat;
   background-size: cover;
@@ -74,8 +74,8 @@ export const BackgroundMediaContainer = styled.div`
 `;
 
 export const BackgroundMediaWrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: inherit;
   background-size: cover;
 
@@ -87,8 +87,8 @@ export const BackgroundMediaWrapper = styled.div`
 `;
 
 export const BackgroundMedia = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: inherit;
   background-size: cover;
 
@@ -100,8 +100,8 @@ export const BackgroundMedia = styled.div`
 `;
 
 export const BackgroundMediaFilter = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(transparent 20%, rgba(0, 0, 0, 0.3) 100%);
   position: absolute;
   top: 0;
@@ -351,8 +351,8 @@ export const ScrollToUnlockContainer = styled.div`
   width: 100%;
   height: 100%;
 
-  padding: 25px 5vw 10px 5vw;
-
+  padding:1.5vw;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
