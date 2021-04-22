@@ -20,6 +20,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px 0 0 0;
+  position:relative;
+  z-index:5;
 `;
 
 export const Header = styled.div`

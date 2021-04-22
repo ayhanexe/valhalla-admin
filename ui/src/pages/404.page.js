@@ -38,11 +38,15 @@ class NotFoundPage extends Component {
       <s.PageContainer>
         <Particles height="100vh" width="100vw" params={particlesParams} />
         <s.PageInner>
-          <s.MoonContainer>
-            <s.FirstFour>4</s.FirstFour>
-            <s.MoonIcon />
-            <s.LastFour>4</s.LastFour>
-          </s.MoonContainer>
+          <s.VerticalInnerContent>
+            <s.VerticalInnerTitle>Oops...</s.VerticalInnerTitle>
+            <s.MoonContainer>
+              <s.FirstFour>4</s.FirstFour>
+              <s.MoonIcon />
+              <s.LastFour>4</s.LastFour>
+            </s.MoonContainer>
+            <s.PageText to="/">click here</s.PageText>
+          </s.VerticalInnerContent>
         </s.PageInner>
       </s.PageContainer>
     );
