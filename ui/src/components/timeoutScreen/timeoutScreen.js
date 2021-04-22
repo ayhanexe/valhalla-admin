@@ -202,7 +202,10 @@ class timeoutScreen extends Component {
       Object.assign(this.state, {
         unlockHold: true,
         unlockValues: {
-          mouseStart: event.pageY - lockScreen.offsetTop - lockScreenRect.top,
+          mouseStart:
+            "touches" in event
+              ? event.touches[0].pageY
+              : event.pageY - lockScreen.offsetTop - lockScreenRect.top,
         },
       })
     );
@@ -212,8 +215,13 @@ class timeoutScreen extends Component {
     if (!this.state.unlockHold) return;
     const lockScreen = this.lockScreenRef.current;
     const yValue =
-      event.pageY - lockScreen.offsetTop - this.state.unlockValues.mouseStart;
-
+      "touches" in event
+        ? event.touches[0].pageY -
+          lockScreen.offsetTop -
+          this.state.unlockValues.mouseStart
+        : event.pageY -
+          lockScreen.offsetTop -
+          this.state.unlockValues.mouseStart;
     if (Math.sign(yValue) === -1 || Math.sign(yValue === 0)) {
       gsap.set(lockScreen, {
         y: yValue,
@@ -244,14 +252,14 @@ class timeoutScreen extends Component {
             gsap.fromTo(
               mediaFilter,
               {
-                opacity:0,
+                opacity: 0,
               },
               {
-                opacity:1,
-                duration:0.4,
-                ease:"power.out"
+                opacity: 1,
+                duration: 0.4,
+                ease: "power.out",
               }
-            )
+            ),
           ])
           .then(() => {
             filter.classList.add("active");
@@ -285,14 +293,14 @@ class timeoutScreen extends Component {
             gsap.fromTo(
               mediaFilter,
               {
-                opacity:1,
+                opacity: 1,
               },
               {
-                opacity:0,
-                duration:0.4,
-                ease:"power.out"
+                opacity: 0,
+                duration: 0.4,
+                ease: "power.out",
               }
-            )
+            ),
           ])
           .then(() => {
             filter.classList.remove("active");
@@ -467,6 +475,24 @@ class timeoutScreen extends Component {
     );
 
     this.lockScreenMouseMoveRef = (event) => this.lockScreenMouseMove(event);
+    window.addEventListener(
+      "touchmove",
+      (event) =>
+        this.state.unlockHold ? this.lockScreenMouseMoveRef(event) : null,
+      false
+    );
+    window.addEventListener(
+      "touchend",
+      (event) =>
+        this.state.unlockHold ? this.lockScreenMouseFailRef(event) : null,
+      false
+    );
+    window.addEventListener(
+      "touchfail",
+      (event) =>
+        this.state.unlockHold ? this.lockScreenMouseFailRef(event) : null,
+      false
+    );
     window.addEventListener("mousemove", (event) =>
       this.lockScreenMouseMoveRef(event)
     );
@@ -513,22 +539,11 @@ class timeoutScreen extends Component {
           >
             <s.BackgroundMediaWrapper>
               <s.BackgroundMedia ref={this.filterRef}></s.BackgroundMedia>
-              <s.BackgroundMediaFilter ref={this.mediaFilterRef}></s.BackgroundMediaFilter>
-              {/* <s.BackgroundMedia
-                type={"image"}
-                mediaUrl={`${process.env.PUBLIC_URL}/assets/media/images/timeout-screen-1.gif`}
-              /> */}
+              <s.BackgroundMediaFilter
+                ref={this.mediaFilterRef}
+              ></s.BackgroundMediaFilter>
             </s.BackgroundMediaWrapper>
           </s.BackgroundMediaContainer>
-
-          {/* <s.BackgroundMedia>
-            <s.BackgroundMediaWrapper>
-              <s.BackgroundMediaWrapperFilter
-                ref={this.filterRef}
-                src={`${process.env.PUBLIC_URL}/assets/media/images/timeout-screen-1.gif`}
-              />
-            </s.BackgroundMediaWrapper>
-          </s.BackgroundMedia> */}
 
           <s.ClockContainer className="no-select">
             <s.Hour>{this.state.clock.hour}</s.Hour>
@@ -593,6 +608,9 @@ class timeoutScreen extends Component {
             onMouseDown={(event) => this.unlockAreaMouseDownRef(event)}
             onMouseUp={(event) => this.unlockAreaMouseFailRef(event)}
             onMouseLeave={(event) => this.unlockAreaMouseFailRef(event)}
+            onTouchStart={(event) => this.unlockAreaMouseDownRef(event)}
+            onTouchEnd={(event) => this.unlockAreaMouseFailRef(event)}
+            onTouchCancel={(event) => this.unlockAreaMouseFailRef(event)}
           >
             <s.MouseIcon />
             <s.UnlockText>Swipe Up To Unlock</s.UnlockText>

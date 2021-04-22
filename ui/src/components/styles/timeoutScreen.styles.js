@@ -74,8 +74,8 @@ export const BackgroundMediaContainer = styled.div`
 `;
 
 export const BackgroundMediaWrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: inherit;
   background-size: cover;
 
@@ -87,8 +87,8 @@ export const BackgroundMediaWrapper = styled.div`
 `;
 
 export const BackgroundMedia = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: inherit;
   background-size: cover;
 
@@ -100,21 +100,20 @@ export const BackgroundMedia = styled.div`
 `;
 
 export const BackgroundMediaFilter = styled.div`
-  width: 200%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: radial-gradient(transparent 20%, rgba(0, 0, 0, 0.3) 100%);
   position: absolute;
   top: 0;
-  left: -50%;
+  left: 0;
   &::after {
     content: "";
     width: 100%;
-    height: 100vw;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     background: radial-gradient(transparent 20%, rgba(0, 0, 0, 0.3) 100%);
-    transform: rotateZ(90deg);
   }
 `;
 
@@ -143,7 +142,8 @@ export const Second = styled.span`
 
 export const NotificationsContainer = styled.div`
   grid-area: notifications;
-  width: 40%;
+  width: 60vw;
+  max-width:500px;
   height: calc(100% - 10px);
   padding: 20px 10px;
   position: absolute;
@@ -155,6 +155,9 @@ export const NotificationsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 `;
 
 export const NotificationsContent = styled.div`
