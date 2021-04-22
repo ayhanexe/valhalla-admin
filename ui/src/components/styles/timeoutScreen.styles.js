@@ -47,7 +47,7 @@ export const Content = styled.div`
 
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: 0.5fr 1fr 0.3fr;
+  grid-template-rows: 1fr 1fr 0.3fr;
   gap: 0px 0px;
   grid-template-areas:
     "clock"
@@ -56,7 +56,7 @@ export const Content = styled.div`
   position: relative;
 
   @media (max-height: 290px) {
-    grid-template-rows: 0.5fr 1fr 0px;
+    grid-template-rows: repeat(2, 1fr) 0px;
   }
 `;
 
@@ -143,7 +143,7 @@ export const Second = styled.span`
 export const NotificationsContainer = styled.div`
   grid-area: notifications;
   width: 60vw;
-  max-width:500px;
+  max-width: 500px;
   height: calc(100% - 10px);
   padding: 20px 10px;
   position: absolute;
@@ -350,13 +350,13 @@ export const ScrollToUnlockContainer = styled.div`
   grid-area: scroll-area;
   width: 100%;
   height: 100%;
+  padding: 1.5vw 0 0 0;
+  margin:0 0 auto 0;
 
-  padding:1.5vw;
-  
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   cursor: pointer;
   transition: opacity 0.3s ease-out;
 
