@@ -305,6 +305,9 @@ export const VerticalInnerTitle = styled.span`
   font-weight:700;
   color:#DDDBD7;
   text-align:center;
+  @media (max-width:576px) {
+    font-size:7vw;
+  }
 `
 
 export const MoonContainer = styled.div`
@@ -316,22 +319,35 @@ export const MoonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width:576px) {
+    height:28vw;
+  }
 `;
 
 export const FirstFour = styled.span`
   font-size:15vw;
   font-weight:700;
   color:#DDDBD7;
+  @media (max-width:576px) {
+    font-size:25vw;
+  }
 `;
 export const LastFour = styled.span`
   font-size:15vw;
   font-weight:700;
   color:#DDDBD7;
+  @media (max-width:576px) {
+    font-size:25vw;
+  }
 `;
 
 export const MoonIcon = styled(MoonSVG)`
   width: 15vw;
   height: 15vw;
+  @media (max-width:576px) {
+    width:25vw;
+    height:25vw;
+  }
 `;
 
 export const PageText = styled(Link)`
@@ -343,4 +359,7 @@ export const PageText = styled(Link)`
   text-decoration:none;
   color:#DDDBD7 !important;
   cursor:pointer;
+  @media (max-width:576px) {
+    font-size:4vw;
+  }
 `;
