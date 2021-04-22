@@ -69,7 +69,6 @@ export const Container = styled.div`
   position: relative;
   border-radius: 10px;
 
-  margin: 10px 0;
   overflow: hidden;
   --bs-aspect-ratio: 130%;
 `;

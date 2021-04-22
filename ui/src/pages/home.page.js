@@ -26,9 +26,13 @@ const Container = styled.div`
     "chat-widget chat-widget chat-widget chat-widget realtime-chart realtime-chart"
     "chat-widget chat-widget chat-widget chat-widget activities-chart activities-chart"
     "weather-widget weather-widget table-container table-container table-container table-container"
-    "file-manager file-manager file-manager file-manager . .";
+    ". . . . . .";
 
-  @media (max-width: 768px) {
+  .weather-widget {
+    height:40vw;
+  }
+
+  @media (max-width: 767px) {
     grid-template-areas:
       "chart-one chart-one chart-two chart-two chart-three chart-three"
       "chat-widget chat-widget chat-widget chat-widget realtime-chart realtime-chart"
@@ -36,7 +40,98 @@ const Container = styled.div`
       "table-container table-container table-container table-container table-container table-container"
       "weather-widget weather-widget . . . .";
     #dashboard-custom-table {
-      height:500px;
+      height: 500px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    grid-template-areas:
+      "chart-one chart-one chart-one chart-one chart-one chart-one"
+      "chart-two chart-two chart-two chart-two chart-two chart-two"
+      "chart-three chart-three chart-three chart-three chart-three chart-three"
+      "chat-widget chat-widget chat-widget chat-widget chat-widget chat-widget"
+      "weather-widget weather-widget weather-widget activities-chart activities-chart activities-chart"
+      "weather-widget weather-widget weather-widget activities-chart activities-chart activities-chart"
+      "table-container table-container table-container table-container table-container table-container"
+      "realtime-chart realtime-chart realtime-chart realtime-chart realtime-chart realtime-chart";
+    grid-template-rows: repeat(5, minmax(0, min-content)) 1fr;
+    #dashboard-custom-table {
+      height: 500px;
+    }
+    .realtime-chart {
+      --bs-aspect-ratio: 35%;
+    }
+    .chart-one,
+    .chart-two,
+    .chart-three {
+      border-radius: 0.5srem;
+      --bs-aspect-ratio: 20%;
+    }
+    .weather-widget,
+    .activities-widget {
+      height: 60vw;
+    }
+  }
+
+  @media (max-width: 450px) {
+    grid-template-areas:
+      "chart-one chart-one chart-one chart-one chart-one chart-one"
+      "chart-two chart-two chart-two chart-two chart-two chart-two"
+      "chart-three chart-three chart-three chart-three chart-three chart-three"
+      "chat-widget chat-widget chat-widget chat-widget chat-widget chat-widget"
+      "weather-widget weather-widget weather-widget activities-chart activities-chart activities-chart"
+      "weather-widget weather-widget weather-widget activities-chart activities-chart activities-chart"
+      "realtime-chart realtime-chart realtime-chart realtime-chart realtime-chart realtime-chart";
+    grid-template-rows: repeat(5, minmax(0, min-content)) 1fr;
+    #dashboard-custom-table {
+      height: 500px;
+    }
+    .chart-one,
+    .chart-two,
+    .chart-three {
+      border-radius: 0.5srem;
+      --bs-aspect-ratio: 20%;
+    }
+    .realtime-chart {
+      --bs-aspect-ratio: 35%;
+    }
+    .weather-widget,
+    .activities-widget {
+      height: 60vw;
+    }
+    .table-grid-container {
+      display: none;
+    }
+  }
+
+  @media (max-width: 300px) {
+    grid-template-areas:
+      "chart-one chart-one chart-one chart-one chart-one chart-one"
+      "chart-two chart-two chart-two chart-two chart-two chart-two"
+      "chart-three chart-three chart-three chart-three chart-three chart-three"
+      "chat-widget chat-widget chat-widget chat-widget chat-widget chat-widget"
+      "activities-chart activities-chart activities-chart activities-chart activities-chart activities-chart"
+      "weather-widget weather-widget weather-widget weather-widget weather-widget weather-widget"
+      "realtime-chart realtime-chart realtime-chart realtime-chart realtime-chart realtime-chart";
+    grid-template-rows: repeat(5, minmax(0, min-content)) 1fr;
+    #dashboard-custom-table {
+      height: 500px;
+    }
+    .chart-one,
+    .chart-two,
+    .chart-three {
+      border-radius: 0.5srem;
+      --bs-aspect-ratio: 20%;
+    }
+    .realtime-chart {
+      --bs-aspect-ratio: 35%;
+    }
+    .weather-widget,
+    .activities-widget {
+      height: 60vw;
+    }
+    .table-grid-container {
+      display: none;
     }
   }
 `;
@@ -136,27 +231,24 @@ class HomePage extends Component {
             gridArea: "realtime-chart",
           }}
         >
-          <RealtimeUsersChart />
+          <RealtimeUsersChart className="realtime-chart" />
         </div>
         <div
           style={{
             gridArea: "activities-chart",
           }}
         >
-          <LastActivities />
+          <LastActivities className="activities-widget" />
         </div>
         <div
           style={{
             gridArea: "weather-widget",
           }}
         >
-          <WeatherWidget
-            style={{
-              height: "40vw",
-            }}
-          />
+          <WeatherWidget className="weather-widget" />
         </div>
         <div
+          className="table-grid-container"
           style={{
             gridArea: "table-container",
           }}
@@ -195,23 +287,6 @@ class HomePage extends Component {
             ) : (
               <LoadingFilters.StandartFilter />
             )}
-          </StyleUtils.WidgetWrapper>
-        </div>
-        <div
-          style={{
-            gridArea: "file-manager",
-          }}
-          className="d-none d-md-block"
-        >
-          <StyleUtils.WidgetWrapper
-            style={{
-              height: "500px",
-            }}
-          >
-            <StyleUtils.WidgetWrapperTitle>
-              File Manager App
-            </StyleUtils.WidgetWrapperTitle>
-            <FileManagerApp />
           </StyleUtils.WidgetWrapper>
         </div>
       </Container>

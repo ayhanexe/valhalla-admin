@@ -6,9 +6,6 @@ export const Container = styled.div`
   position: relative;
   overflow: hidden;
   z-index: 0;
-  @media (max-width: 768px) {
-    --bs-aspect-ratio: 40%;
-  }
 `;
 
 export const ContainerContent = styled.div`
@@ -23,25 +20,19 @@ export const ContainerContent = styled.div`
 `;
 
 export const ContainerTitle = styled.span`
-  font-size: 2vmax;
+  font-size: 2vw;
   font-weight: 900;
   mix-blend-mode: exclusion;
   white-space: nowrap;
-  @media (max-width: 575px) {
-    font-size: 1.5vmax;
-  }
 `;
 
 export const ContainerValue = styled.span`
-  font-size: 2vmax;
+  font-size: 2vw;
   font-weight: 900;
   mix-blend-mode: exclusion;
   position: relative;
   bottom: 0.5vmax;
   white-space: nowrap;
-  @media (max-width: 575px) {
-    font-size: 1.5vmax;
-  }
 `;
 
 export const SettingsContainer = styled.div`
