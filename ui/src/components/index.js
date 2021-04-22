@@ -15,3 +15,5 @@ export { default as CustomScrollbar } from "./customScrollbar/customScrollbar";
 export * as LoadingFilters from "./loadingFilters/loadingFilters";
 export { default as WeatherWidget } from "./weatherWidget/weatherWidget";
 export { default as FileManagerApp } from "./fileManager/fileManager";
+export * as TutorialComponents from "./tutorial-components";
+export { default as CustomTable } from "./customTable/customTable";

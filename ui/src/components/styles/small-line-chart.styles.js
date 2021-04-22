@@ -11,16 +11,13 @@ const GearSVG = (props) => (
 );
 
 export const Container = styled.div`
-  width:100%;
-  height: 13vmax;
   background-color: #090b14;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   position: relative;
   overflow: hidden;
-  margin: 20px 0;
   z-index: 0;
-  @media (max-width: 575px) {
-    height: 20vmax;
+  @media (max-width: 768px) {
+    --bs-aspect-ratio: 40%;
   }
 `;
 
@@ -41,7 +38,7 @@ export const ContainerTitle = styled.span`
   mix-blend-mode: exclusion;
   white-space: nowrap;
   @media (max-width: 575px) {
-    font-size:3vmax;
+    font-size: 1.5vmax;
   }
 `;
 
@@ -53,7 +50,7 @@ export const ContainerValue = styled.span`
   bottom: 0.5vmax;
   white-space: nowrap;
   @media (max-width: 575px) {
-    font-size:3vmax;
+    font-size: 1.5vmax;
   }
 `;
 
@@ -73,57 +70,13 @@ export const SettingsContainer = styled.div`
 export const IconContainer = styled.div``;
 
 export const ChartContainer = styled.div`
-  width:100%;
-  height:50%;
-  backgound-color:blue;
-  
-  position:absolute;
-  bottom:0;
-  left:0;
-`;
-
-export const SettingsIcon = styled(GearSVG)`
-  width: 14px;
-  height: 14px;
-  display: block;
-  fill: white;
-  cursor: pointer;
-  transition: transform 0.15s ease-out;
-  &:hover {
-    transform: rotateZ(45deg);
-  }
-`;
-
-export const PopupContainer = styled.div`
-  width: 100px;
-  height: auto;
-  background-color: #161b32;
-  position: absolute;
-  padding: 5px;
-  margin: 5px 0 0 0;
-  top: 100%;
-  left: 0;
-  padding: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 3px;
-  opacity: 0;
-  visibility: hidden;
-`;
-
-export const PopupItem = styled.div`
   width: 100%;
-  background-color: #121628;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 0 2px 0;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 0.9em;
-  transition: background-color 0.3s ease-out;
-  &:hover {
-    background-color: #0d101e;
-  }
+  height: 50%;
+  backgound-color: blue;
+
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: 0 !important;
+  left: 0 !important;
 `;

@@ -94,10 +94,10 @@ class ThemeService {
       name: "Dark Night",
       data: this.dark,
     },
-    {
-      name: "Light Side",
-      data: this.light,
-    },
+    // {
+    //   name: "Light Side",
+    //   data: this.light,
+    // },
   ];
 
   setTheme(index) {

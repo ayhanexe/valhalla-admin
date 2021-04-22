@@ -121,15 +121,7 @@ class SmallChart extends Component {
     };
 
     return (
-      <s.Container ref={this.ref} className="small-line-chart">
-        {/* <s.SettingsContainer>
-          <s.IconContainer onClick={(event) => this.openPopup(event)}>
-            <s.SettingsIcon />
-            <s.PopupContainer className="popup-container">
-              <s.PopupItem>Edit</s.PopupItem>
-            </s.PopupContainer>
-          </s.IconContainer>
-        </s.SettingsContainer> */}
+      <s.Container ref={this.ref} className={`small-line-chart ratio ratio-21x9 ${this.props.className ?? ""}`}>
         <s.ContainerContent>
           <s.ContainerTitle>{this.props.title ?? ""}</s.ContainerTitle>
           <s.ContainerValue

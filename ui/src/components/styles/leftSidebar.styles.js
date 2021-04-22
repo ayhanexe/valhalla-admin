@@ -42,7 +42,7 @@ export const Container = styled.div`
   left: ${(props) => (props.isLeftSidebarOpen ? "0" : "calc(-300px - 2vmax)")};
   background-color: ${({ theme }) => theme.leftSidebar.backgroundColor};
   color: ${({ theme }) => theme.leftSidebar.color};
-  padding: 20px 25px 0 25px;
+  padding: 20px 10px 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,7 +87,6 @@ export const Toggler = styled.div`
         ? "right:0; border-radius:100vw 0 0 100vw;"
         : null}
     ${(props) => (props.$isRightSidebarOpen ? "right:0;" : null)}
-    // transform:translateY(calc(-50% + 25px))
   }
 `;
 
@@ -115,7 +114,16 @@ export const Title = styled.h1`
 export const SectorTitle = styled.h6`
   width: 100%;
   font-size: 1.05em;
+  margin:20px 0 0 0;
+  
+  &:nth-child(1) {
+    margin-top:0;
+  }
 `;
+
+export const LeftSidebarContent = styled.div`
+  padding:0 10px;
+`
 
 export const LeftSidebarItem = styled.div`
   width: 100%;

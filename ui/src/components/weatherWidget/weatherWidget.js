@@ -198,7 +198,7 @@ class weatherWidget extends Component {
     };
 
     return (
-      <s.Container>
+      <s.Container {...this.props}>
         <s.WeatherGeneralContent ref={this.generalPageRef}>
           <s.WeatherHeader>
             <span>Azerbaijan, Baku</span>

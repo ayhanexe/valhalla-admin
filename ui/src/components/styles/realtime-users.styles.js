@@ -10,31 +10,43 @@ const UpSVG = (props) => (
   </svg>
 );
 
-export const Container = styled.div`
+export const Background = styled.div`
   width: 100%;
-  height: 22vw;
-  background-color: #05070c;
+  height: auto;
+  min-height:100px;
   border-radius: 10px;
   position: relative;
-  padding: 5px;
   display: flex;
+  overflow: hidden;
+  --bs-aspect-ratio: 50%;
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #05070c;
+  padding: 3px;
 `;
 
 export const Content = styled.div`
   width: 100%;
   height: 100%;
   background-color: #0b0d19;
+  border-radius: 10px;
+
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  border-radius: 10px;
+  
+  position:relative;
+`;
+
+export const ContentHeader = styled.div`
+  display: flex;
+  padding: 5px 0 0 10px;
 `;
 
 export const Title = styled.span`
-  position: absolute;
-  top: 15px;
-  left: 25px;
   font-size: 1.75vw;
   font-weight: 800;
   color: #d5d6ef;
@@ -46,21 +58,17 @@ export const Title = styled.span`
 
 export const ChartContainer = styled.div`
   width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-`;
-
-export const ValueContainer = styled.div`
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  display: flex;
+  height:80%;
+  position:absolute;
+  bottom:0;
+  left:0;
 `;
 
 export const Value = styled.span`
   font-size: 1.75vw;
   font-weight: 800;
   color: #be283c;
+  margin: 0 10px 0 0;
   @media (max-width: 800px) {
     font-size: 1em;
   }
@@ -69,7 +77,7 @@ export const Value = styled.span`
 export const PercentStatContainer = styled.div`
   display: flex;
   padding: 5px;
-  margin: 0 10px;
+  margin: 0 0 0 auto;
   position: relative;
   .percent {
     color: #01fb83;
@@ -82,19 +90,15 @@ export const PercentStatContainer = styled.div`
     .up-icon {
       transform: rotateZ(180deg);
       margin-top: auto;
-      margin-bottom: 3px;
+      margin-bottom: 5px;
       fill: #ff3c53;
     }
-  }
-  @media (max-width: 580px) {
-    display: none;
   }
 `;
 
 export const Percent = styled.span`
   font-size: 1vw;
   font-weight: 800;
-  margin: 0 5px;
   @media (max-width: 800px) {
     font-size: 0.75em;
   }

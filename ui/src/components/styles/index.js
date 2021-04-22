@@ -12,3 +12,7 @@ export * as LoadingFilterStyles from "./loadingFilters.styles";
 export * as CustomScrollbarStyles from "./customScrollbar.styles";
 export * as WeatherWidgetStyles from "./weatherWidget.styles";
 export * as FileManagerStyles from "./fileManager.styles";
+export * as TutorialComponentStyles from "./tutorialComponent.styles";
+export * as CustomTableStyles from "./customTable.styles";
+export * as StyleUtils from "./util.styles";
+export * as NotFoundPageStyles from "./404.page.styles";

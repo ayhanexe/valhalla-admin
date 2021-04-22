@@ -80,13 +80,15 @@ export const Container = styled.div`
   min-width: 100px;
   height: ${(props) => props.height};
   background-color: #05070c;
-  padding: 5px;
+  
+  padding: 4px;
+  
   border-radius: 10px;
   position: relative;
-  
+
   &.full-screen {
     width: 100%;
-    height: 100%;
+    height: 100vh;
   }
 `;
 
@@ -98,7 +100,7 @@ export const ContainerWrapper = styled.div`
 
   grid-template-columns: minmax(150px, 0.6fr) 1fr;
   grid-template-rows: 1fr;
-  gap: 0 5px;
+  gap: 0 4px;
   grid-template-areas: "people-area content-area";
   border-radius: 10px;
   position:relative;
@@ -236,16 +238,6 @@ export const UserProfile = styled.div`
   background: #0c0f1c url(${(props) => props.image ?? ""}) center no-repeat;
   background-size: cover;
   border-radius: 50%;
-  &.header-style {
-    width: 55px;
-    height: 55px;
-    flex: 0 0 55px;
-  }
-  &.message-style {
-    width: 60px;
-    height: 60px;
-    flex: 0 0 60px;
-  }
 `;
 
 export const PeopleItemContent = styled.div`
@@ -300,13 +292,34 @@ export const PeopleItemTime = styled.span`
 
 export const ContentAreaHeader = styled.div`
   width: 100%;
-  height: 65px;
+  height: auto;
+  max-height: 65px;
   background-color: #0b0d19;
   display: flex;
   align-items: center;
-  padding: 7px 7px 7px 10px;
+  padding: 7px 0 7px 10px;
   grid-area: header;
   z-index: 1;
+  .header-style {
+    width: ${(props) =>
+      `${
+        parseInt(props.$width / 100) * (parseInt(props.$width) < triggerWidth)
+          ? 40
+          : 50
+      }px`};
+    height: ${(props) =>
+      `${
+        parseInt(props.$width / 100) * (parseInt(props.$width) < triggerWidth)
+          ? 40
+          : 50
+      }px`};
+    flex: ${(props) =>
+      `0 0 ${
+        parseInt(props.$width / 100) * (parseInt(props.$width) < triggerWidth)
+          ? 40
+          : 50
+      }px`};
+  }
 `;
 
 export const ContentHeaderTextArea = styled.div`
@@ -360,6 +373,12 @@ export const MessageArea = styled.div`
   grid-area: messages;
   overflow: auto;
   position: relative;
+
+  .message-style {
+    width:50px;
+    height:50px;
+    flex: 0 0 50px;
+  }
 `;
 
 export const MessagesContainer = styled.div`
@@ -426,11 +445,6 @@ export const MessageItem = styled.div`
 
   &.other {
     flex-direction: row;
-    .message-profile {
-      width: 50px;
-      height: 50px;
-      flex: 0 0 50px;
-    }
   }
 `;
 
@@ -445,7 +459,7 @@ export const MessageItemTextContainer = styled.div`
 
 export const MessageItemText = styled.pre`
   font-family: ${(props) => props.$fontFamily};
-  font-size: 0.95em;
+  font-size: 0.85em;
   white-space: pre-wrap;
   margin: 0;
   color: #b5bad3;

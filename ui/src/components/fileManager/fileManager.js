@@ -46,7 +46,11 @@ class fileManager extends Component {
                   children: [
                     {
                       isFile: true,
-                      filename: "server.js",
+                      filename: "fileSystem.js",
+                      dateModified: new Date(),
+                      dateCreated: new Date(),
+                      permissions: "Read, Write",
+                      size: "82.9 KB",
                     },
                   ],
                 },
@@ -141,7 +145,12 @@ class fileManager extends Component {
                   />
                 );
               } else {
-                return <s.PathFile file={item} key={index} />;
+                return (
+                  <s.PathFile
+                    file={item}
+                    key={index}
+                  />
+                );
               }
             })
           : null}
@@ -324,7 +333,7 @@ class fileManager extends Component {
 
   render() {
     return (
-      <s.Container ref={this.ref} size={this.state.size}>
+      <s.Container ref={this.ref} size={this.state.size} style={this.props.style}>
         <s.Header>
           <s.TabsContainer id="tabs-container">
             <s.TabItem className="tab-item active">
@@ -358,7 +367,6 @@ class fileManager extends Component {
           </s.Sidebar>
           <s.PathContentContainer size={this.state.size}>
             {this.getPathContent(this.state.currentPath)}
-            {/* <s.PathFile className="file-item" file={{ filename: "test.js" }} /> */}
           </s.PathContentContainer>
         </s.ContentContainer>
       </s.Container>

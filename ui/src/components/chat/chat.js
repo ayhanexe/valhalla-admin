@@ -209,7 +209,7 @@ class Chat extends Component {
           </s.PeopleArea>
           {/* Content */}
           <s.ContentArea>
-            <s.ContentAreaHeader>
+            <s.ContentAreaHeader $windowWidth={this.state.windowWidth} $width={this.state.containerWidth}>
               <s.UserProfile
                 className="header-style"
                 image={`${process.env.PUBLIC_URL}/assets/media/profiles/laura-profile.jpg`}
@@ -229,7 +229,7 @@ class Chat extends Component {
                 <s.ContentHeaderSettingsIcon />
               </s.ContentHeaderIconContainer>
             </s.ContentAreaHeader>
-            <s.MessageArea ref={this.messageAreaRef}>
+            <s.MessageArea $width={this.state.containerWidth} ref={this.messageAreaRef}>
               <s.MessagesContainer ref={this.messagesContainerRef}>
                 {this.state.messages.map((item, index) => (
                   <s.MessageItem
@@ -241,7 +241,7 @@ class Chat extends Component {
                     }`}
                   >
                     <s.UserProfile
-                      className="message-style message-profile"
+                      className="message-style"
                       image={item.user.profileImage}
                     />
                     <s.MessageItemTextContainer>

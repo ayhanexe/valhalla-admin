@@ -63,7 +63,7 @@ class lastActivities extends Component {
 
   render() {
     return (
-      <s.Container id="last-activities">
+      <s.Container id="last-activities" className={`${this.props.className}`}>
         {this.state.activities.length === 0 ? (
           <LoadingFilters.StandartFilter />
         ) : null}

@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import {Link} from "react-router-dom";
 
 const LockSVG = (props) => (
   <svg
@@ -33,7 +34,7 @@ export const Header = styled.div`
   padding: 0 0 0 15px;
 `;
 
-export const HeaderTitle = styled.span`
+export const HeaderTitle = styled(Link)`
   margin-right: auto;
 `;
 

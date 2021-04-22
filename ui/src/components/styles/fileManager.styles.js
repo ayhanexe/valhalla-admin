@@ -426,14 +426,17 @@ export const BreadcrumbHistoryButton = (props) => (
 
 const BreadcrumbItemContainer = styled.div`
   height: 20px;
-
+  font-size:1vw;
+  white-space:nowrap;
+  text-overflow:ellipsis;
   display: flex;
   align-items: center;
+  overflow-x:auto;
 `;
 
 const BreadcrumbItemIcon = styled(ArrowRightSVG)`
-  width: 14px;
-  height: 14px;
+  width: 1.2vw;
+  height: 1.2vw;
   fill: #5f647a;
 
   margin: 0 5px 0 5px;
@@ -467,8 +470,8 @@ const BreadcrumbEffectContainer = styled.div`
 `;
 
 const BreadcrumbFolderIcon = styled(FolderSVG)`
-  width: 14px;
-  height: 14px;
+  width: 1.4vw;
+  height: 1.4vw;
   fill: #5f647a;
 
   margin: 0 5px 0 0;
@@ -706,7 +709,7 @@ export const PathContentContainer = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
 
-  padding: 80px 20px 0 20px;
+  padding: 5vw 20px 0 20px;
 
   position: relative;
 
@@ -722,6 +725,7 @@ export const PathContentContainer = styled.div`
 `;
 
 export const PathTitle = styled.h3`
+  font-size:2vw;
   position: absolute;
   top: 20px;
   left: 30px;
@@ -788,7 +792,10 @@ const FileName = styled.span`
 `;
 
 export const PathFile = (props) => (
-  <FileContainer className={`file-item ${props.className}`}>
+  <FileContainer
+    onClick={props.onClick ?? null}
+    className={`file-item ${props.className}`}
+  >
     <FileContentContainer className="file-content-container">
       <FileType>{props.file?.filename.split(".").pop() || ""}</FileType>
       <FileIcon />
@@ -853,14 +860,3 @@ export const PathFolder = (props) => (
     <FolderName>{props?.folder?.name}</FolderName>
   </FolderContainer>
 );
-
-export const DetailsContainer = styled.div`
-  width: 150px;
-  height: 100%;
-
-  background-color: green;
-
-  position: absolute;
-  top: 0;
-  right: 0;
-`;

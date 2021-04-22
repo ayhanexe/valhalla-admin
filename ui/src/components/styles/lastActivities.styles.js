@@ -3,7 +3,8 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   min-width: 100px;
   width: 100%;
-  height: 400px;
+  height:40vmax;
+  max-height:400px;
 
   background-color: #090b14;
 
@@ -17,9 +18,9 @@ export const Container = styled.div`
     "title"
     "items";
 
-  margin:20px 0;
-    
   position: relative;
+
+  overflow: hidden;
 `;
 
 export const Title = styled.span`
@@ -27,7 +28,7 @@ export const Title = styled.span`
   font-weight: 700;
 
   margin: 10px 0;
-  padding: 0 0 10px 0;
+  padding: 0 0 0px 0;
 
   display: flex;
   align-items: center;
@@ -38,23 +39,27 @@ export const Title = styled.span`
 
 export const ActivityContent = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  position: absolute;
+  top: 0;
+  left: 0;
+
   grid-area: "items";
 
   overflow: hidden;
-  
-  padding:0 15px 0 0;
+
+  padding: 0 15px 0 0;
 `;
 
 export const ActivityItemContainer = styled.div`
   width: 100%;
-  height: 60px;
-  flex: 0 0 60px;
+  height: auto;
+  flex: 0 0 auto;
 
   background-color: rgba(13, 16, 30, 0.5);
 
@@ -71,13 +76,13 @@ export const ActivityItemContainer = styled.div`
   grid-template-rows: 1fr;
   grid-template-columns: min-content 1fr min-content;
   align-items: center;
-  
-  cursor:pointer;
+
+  cursor: pointer;
 `;
 
 export const ActivityItemProfile = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 4.8vmax;
+  height: 4.8vmax;
   background: #161b32 url(${(props) => props.image}) center no-repeat;
   background-size: cover;
 
@@ -87,8 +92,8 @@ export const ActivityItemProfile = styled.div`
 `;
 
 export const ActivityItemText = styled.span`
+  font-size:.9vmax;
   margin: 0 0 0 10px;
-
   grid-area: text;
 `;
 

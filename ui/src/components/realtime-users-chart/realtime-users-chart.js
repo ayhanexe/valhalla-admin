@@ -88,6 +88,7 @@ class RealtimeUsersChart extends Component {
           backgroundColor: "transparent",
           pointBackgroundColor: "#fff",
           pointHoverBorderWidth: 0.5,
+          borderWidth: 0.85,
           pointRadius: 0,
           stepSize: 10,
           data: this.state.data,
@@ -97,14 +98,17 @@ class RealtimeUsersChart extends Component {
 
     const options = {
       legend: { display: false },
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           labels: {
+            // This more specific font property overrides the global property
             font: {
-              size: 10,
+              size: 24,
             },
           },
         },
+        font:32,
       },
       elements: {
         point: {
@@ -113,17 +117,19 @@ class RealtimeUsersChart extends Component {
       },
       layout: {
         padding: {
-          top: this.state.windowWidth <= 800 ? 17 : 30,
-          bottom: this.state.windowWidth <= 800 ? 0 : 10,
-          right: this.state.windowWidth <= 800 ? 0 : 30,
+          top: this.state.windowWidth <= 850 ? 17 : 30,
+          // bottom: this.state.windowWidth <= 850 ? 0 : 0,
+          right: this.state.windowWidth <= 850 ? 0 : 30,
+          left: this.state.windowWidth <= 850 ? 0 : 20,
         },
       },
       scales: {
         xAxes: [
           {
             ticks: {
+              fontSize:10,
               maxRotation: 0,
-              maxTicksLimit: this.state.windowWidth <= 800 ? 1 : 3,
+              maxTicksLimit: this.state.windowWidth <= 850 ? 1 : 3,
             },
             gridLines: {
               display: false,
@@ -133,6 +139,7 @@ class RealtimeUsersChart extends Component {
         yAxes: [
           {
             ticks: {
+              fontSize:0,
               autoSkip: true,
               maxTicksLimit: 3,
             },
@@ -144,34 +151,39 @@ class RealtimeUsersChart extends Component {
       },
     };
     return (
-      <s.Container>
-        <s.Content>
-          <s.Title>Realtime Users</s.Title>
-          <s.ValueContainer>
-            <s.PercentStatContainer
-              className={
-                parseInt(this.state.data[this.state.data.length - 1].y) <
-                parseInt(this.state.data[this.state.data.length - 2].y)
-                  ? ""
-                  : "down"
-              }
-            >
-              <s.Percent className="percent">
-                {`${
-                  this.state.data[this.state.data.length - 2].y < 10
-                    ? `0${this.state.data[this.state.data.length - 2].y}`
-                    : this.state.data[this.state.data.length - 2].y
-                }%`}
-              </s.Percent>
-              <s.UpIcon className="up-icon" />
-            </s.PercentStatContainer>
-            <s.Value>{this.state.data[this.state.data.length - 1].y}</s.Value>
-          </s.ValueContainer>
-          <s.ChartContainer>
-            <Line data={data} options={options} />
-          </s.ChartContainer>
-        </s.Content>
-      </s.Container>
+      <s.Background
+        size={{ w: this.state.windowWidth, h: this.state.windowHeight }}
+        className={`ratio ratio-21x9 ${this.props.className}`}
+      >
+        <s.Container>
+          <s.Content>
+            <s.ContentHeader>
+              <s.Title>Realtime Users</s.Title>
+              <s.PercentStatContainer
+                className={
+                  parseInt(this.state.data[this.state.data.length - 1].y) <
+                  parseInt(this.state.data[this.state.data.length - 2].y)
+                    ? ""
+                    : "down"
+                }
+              >
+                <s.Percent className="percent">
+                  {`${
+                    this.state.data[this.state.data.length - 2].y < 10
+                      ? `0${this.state.data[this.state.data.length - 2].y}`
+                      : this.state.data[this.state.data.length - 2].y
+                  }%`}
+                </s.Percent>
+                <s.UpIcon className="up-icon" />
+              </s.PercentStatContainer>
+              <s.Value>{this.state.data[this.state.data.length - 1].y}</s.Value>
+            </s.ContentHeader>
+            <s.ChartContainer>
+              <Line data={data} options={options} />
+            </s.ChartContainer>
+          </s.Content>
+        </s.Container>
+      </s.Background>
     );
   }
 }

@@ -11,10 +11,6 @@ class customScrollbar extends Component {
     return <s.Thumb width={width}></s.Thumb>;
   }
 
-  Frame() {
-    return <s.Frame></s.Frame>;
-  }
-
   render() {
     return (
       <Scrollbars

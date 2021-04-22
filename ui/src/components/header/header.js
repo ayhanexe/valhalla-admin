@@ -46,7 +46,7 @@ class Header extends Component {
     return (
       <s.Container id="header">
         <s.Header>
-          <s.HeaderTitle>Valhalla</s.HeaderTitle>
+          <s.HeaderTitle to="/" className="text-reset text-decoration-none">Valhalla</s.HeaderTitle>
           <s.LockScreenIcon onClick={this.props.lockScreen} />
           <UserArea onClick={(events) => this.valhallaUtils.openLockScreen()} />
         </s.Header>

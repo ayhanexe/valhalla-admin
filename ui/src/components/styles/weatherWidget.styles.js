@@ -59,8 +59,8 @@ const LeftSVG = (props) => (
 );
 
 export const Container = styled.div`
-  width: 25vw;
-  height: calc(100px + 25vw);
+  width: 100%;
+  height: auto;
   background-color: #040610;
   color: #585d78;
   font-size: calc(0.2em + 0.7vw);
@@ -71,6 +71,7 @@ export const Container = styled.div`
 
   margin: 10px 0;
   overflow: hidden;
+  --bs-aspect-ratio: 130%;
 `;
 
 export const WeatherGeneralContent = styled.div`
