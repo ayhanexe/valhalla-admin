@@ -12,7 +12,6 @@ import {
   WeatherWidget,
   CustomTable,
   LoadingFilters,
-  FileManagerApp,
 } from "../components";
 
 const Container = styled.div`
