@@ -34,7 +34,7 @@ class UIAccordionPage extends Component {
                     aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample"
                   >
-                    <div className="accordion-body">
+                    <div className="accordion-body text-light">
                       <strong>This is the first item's accordion body.</strong>{" "}
                       It is hidden by default, until the collapse plugin adds
                       the appropriate classes that we use to style each element.
@@ -66,7 +66,7 @@ class UIAccordionPage extends Component {
                     aria-labelledby="headingTwo"
                     data-bs-parent="#accordionExample"
                   >
-                    <div className="accordion-body">
+                    <div className="accordion-body text-light">
                       <strong>This is the second item's accordion body.</strong>{" "}
                       It is hidden by default, until the collapse plugin adds
                       the appropriate classes that we use to style each element.
@@ -98,7 +98,7 @@ class UIAccordionPage extends Component {
                     aria-labelledby="headingThree"
                     data-bs-parent="#accordionExample"
                   >
-                    <div className="accordion-body">
+                    <div className="accordion-body text-light">
                       <strong>This is the third item's accordion body.</strong>{" "}
                       It is hidden by default, until the collapse plugin adds
                       the appropriate classes that we use to style each element.
@@ -145,7 +145,7 @@ class UIAccordionPage extends Component {
                     aria-labelledby="flush-headingOne"
                     data-bs-parent="#accordionFlushExample"
                   >
-                    <div className="accordion-body">
+                    <div className="accordion-body text-light">
                       Placeholder content for this accordion, which is intended
                       to demonstrate the <code>.accordion-flush</code> class.
                       This is the first item's accordion body.
@@ -171,7 +171,7 @@ class UIAccordionPage extends Component {
                     aria-labelledby="flush-headingTwo"
                     data-bs-parent="#accordionFlushExample"
                   >
-                    <div className="accordion-body">
+                    <div className="accordion-body text-light">
                       Placeholder content for this accordion, which is intended
                       to demonstrate the <code>.accordion-flush</code> class.
                       This is the second item's accordion body. Let's imagine
@@ -198,7 +198,7 @@ class UIAccordionPage extends Component {
                     aria-labelledby="flush-headingThree"
                     data-bs-parent="#accordionFlushExample"
                   >
-                    <div className="accordion-body">
+                    <div className="accordion-body text-light">
                       Placeholder content for this accordion, which is intended
                       to demonstrate the <code>.accordion-flush</code> class.
                       This is the third item's accordion body. Nothing more

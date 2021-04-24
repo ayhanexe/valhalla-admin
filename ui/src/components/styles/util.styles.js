@@ -8,8 +8,9 @@ export const WidgetWrapper = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  background-color: #070a1a;
-
+  ${({ theme }) =>
+    theme?.utils?.widgetWrapper ? { ...theme?.utils?.widgetWrapper } : null}}
+  
   padding: 10px;
 
   border-radius: 7px;
@@ -21,6 +22,9 @@ export const WidgetWrapperTitle = styled.h4`
   font-size:1.5vw;
   font-weight: 700;
   text-transform: capitalize;
-  color:#A1A7C8;
   margin:0 0 1vw 0;
+  ${({ theme }) =>
+    theme?.utils?.widgetWrapper.title
+      ? { ...theme?.utils?.widgetWrapper.title }
+      : null}}
 `;

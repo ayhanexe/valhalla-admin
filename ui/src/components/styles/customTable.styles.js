@@ -61,7 +61,7 @@ const NextPageSVG = (props) => (
 );
 
 export const CustomTableWrapper = styled.div`
-  background-color: #040610;
+  ${({ theme }) => (theme?.customTable ? { ...theme?.customTable } : null)}
   border-radius: 7px;
   display: flex;
   flex-direction: column;
@@ -84,19 +84,20 @@ export const CustomTableInteractiveHeader = styled.div`
 export const CustomTableThead = styled.thead``;
 export const CustomTableTbody = styled.tbody`
   height: 100%;
-  border-top: 1px solid #161b32;
-  border-bottom: 1px solid #161b32;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  ${({ theme }) =>
+    theme?.customTable.tbody ? { ...theme?.customTable.tbody } : null}
 `;
 export const CustomTableTfoot = styled.tfoot``;
 
 export const CustomTableTR = styled.tr`
   padding: 5px;
   height: auto;
-  border-top: 1px solid #161b32;
   display: flex;
+  ${({ theme }) =>
+    theme?.customTable.tr ? { ...theme?.customTable.tr } : null}
   &:nth-child(1) {
     border: none;
   }
@@ -121,8 +122,7 @@ export const TableRowText = styled.span`
   text-align: right;
   float: right;
   padding: 5px 10px 0;
-
-  color: #7c8196;
+  ${({ theme }) => (theme?.tableRowText ? { ...theme?.tableRowText } : null)}
 `;
 
 const TablePageButtonElement = styled.button`
@@ -136,7 +136,10 @@ const TablePageButtonElement = styled.button`
   align-items: center;
   justify-content: center;
 
-  background-color: #1a1e32;
+  ${({ theme }) =>
+    theme?.customTable?.tablePageButtonElement
+      ? { ...theme?.customTable?.tablePageButtonElement }
+      : null}
 
   border-radius: 5px;
 
@@ -159,28 +162,40 @@ const FirstTablePageButtonIcon = styled(FirstPageSVG)`
   width: 15px;
   height: 15px;
   flex: 0 0 15px;
-  fill: whitesmoke;
+  ${({ theme }) =>
+    theme?.customTable?.tablePageButtonElement.icon
+      ? { ...theme?.customTable?.tablePageButtonElement.icon }
+      : null}
 `;
 
 const PreviousTablePageButtonIcon = styled(PreviousPageSVG)`
   width: 15px;
   height: 15px;
   flex: 0 0 15px;
-  fill: whitesmoke;
+  ${({ theme }) =>
+    theme?.customTable?.tablePageButtonElement.icon
+      ? { ...theme?.customTable?.tablePageButtonElement.icon }
+      : null}
 `;
 
 const NextTablePageButtonIcon = styled(NextPageSVG)`
   width: 15px;
   height: 15px;
   flex: 0 0 15px;
-  fill: whitesmoke;
+  ${({ theme }) =>
+    theme?.customTable?.tablePageButtonElement.icon
+      ? { ...theme?.customTable?.tablePageButtonElement.icon }
+      : null}
 `;
 
 const LastTablePageButtonIcon = styled(LastPageSVG)`
   width: 15px;
   height: 15px;
   flex: 0 0 15px;
-  fill: whitesmoke;
+  ${({ theme }) =>
+    theme?.customTable?.tablePageButtonElement.icon
+      ? { ...theme?.customTable?.tablePageButtonElement.icon }
+      : null}
 `;
 
 export const FirstTablePageButton = (props) => (
@@ -214,8 +229,11 @@ const CustomTablePageChangerContainer = styled.div`
 const CustomTablePageChangerText = styled.span`
   font-size: 0.85em;
   font-weight: 500;
-  color: #7c8196;
   margin: 4px 0 5px 10px;
+  ${({ theme }) =>
+    theme?.customTable?.customTablePageChangerText
+      ? { ...theme?.customTable?.customTablePageChangerText }
+      : null}
 `;
 const CustomTablePageChangerInput = styled.input`
   width: 70px;
@@ -227,7 +245,10 @@ const CustomTablePageChangerInput = styled.input`
   font-size: 0.85em;
   font-weight: 500;
   color: whitesmoke;
-  background-color: #1a1e32;
+  ${({ theme }) =>
+    theme?.customTable?.customTablePageChangerInput
+      ? { ...theme?.customTable?.customTablePageChangerInput }
+      : null}
 
   outline: none;
   -moz-default-appearance: none;
@@ -260,7 +281,10 @@ export const CustomTableGlobalFilterContainer = styled.div`
 export const CustomTableGlobalFilterText = styled.span`
   font-size: 1em;
   font-weight: 600;
-  color: #7a7f94;
+  ${({ theme }) =>
+    theme?.customTable?.customTableGlobalFilterText
+      ? { ...theme?.customTable?.customTableGlobalFilterText }
+      : null}
 `;
 export const CustomTableGlobalFilterInput = styled.input`
   width: 150px;
@@ -271,17 +295,22 @@ export const CustomTableGlobalFilterInput = styled.input`
 
   font-size: 0.85em;
   font-weight: 500;
-  background-color: #1a1e32;
-  color: whitesmoke;
   border: none;
   border-radius: 5px;
   outline: none;
+  ${({ theme }) =>
+    theme?.customTable?.customTableGlobalFilterInput
+      ? { ...theme?.customTable?.customTableGlobalFilterInput }
+      : null}
 `;
 
 const CustomTableShowContentContainer = styled.div`
   width: 100px;
   height: 30px;
-  background-color: #1a1e32;
+  ${({ theme }) =>
+    theme?.customTable?.customTableShowContentSelect
+      ? { ...theme?.customTable?.customTableShowContentSelect }
+      : null}
   padding: 2px 5px;
   margin: 5px 10px;
   border-radius: 7px;
@@ -290,11 +319,13 @@ const CustomTableShowContentContainer = styled.div`
 const CustomTableShowContentSelect = styled.select`
   width: 100%;
   height: 100%;
-  background-color: #1a1e32;
-  color: #7c8196;
   font-size: 0.85em;
   font-weight: 500;
   border: 0;
+  ${({ theme }) =>
+    theme?.customTable?.customTableShowContentSelect
+      ? { ...theme?.customTable?.customTableShowContentSelect }
+      : null}
 `;
 const CustomTableShowContentOption = styled.option``;
 

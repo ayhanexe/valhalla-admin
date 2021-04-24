@@ -169,7 +169,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="mb-5">
         <div
           className="mt-2"
           style={{

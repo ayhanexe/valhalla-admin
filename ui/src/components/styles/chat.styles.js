@@ -77,12 +77,10 @@ const PeopleSVG = (props) => (
 const triggerWidth = 500;
 
 export const Container = styled.div`
+  ${({ theme }) => (theme?.chatApp ? { ...theme?.chatApp } : null)}
   min-width: 100px;
   height: ${(props) => props.height};
-  background-color: #05070c;
-  
-  padding: 4px;
-  
+
   border-radius: 10px;
   position: relative;
 
@@ -125,8 +123,9 @@ export const ContainerWrapper = styled.div`
 `;
 
 export const PeopleArea = styled.div`
+  ${({ theme }) =>
+    theme?.chatApp?.peopleArea ? { ...theme?.chatApp?.peopleArea } : null}
   grid-area: people-area;
-  background-color: #171a28;
   border-radius: 10px;
 
   display: flex;
@@ -151,10 +150,9 @@ export const PeopleArea = styled.div`
       : null}
 `;
 export const ContentArea = styled.div`
-  background-color: blue;
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea ? { ...theme?.chatApp?.contentArea } : null}
   grid-area: content-area;
-  background-color: #171a28;
-  border-radius: 10px;
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
@@ -172,9 +170,11 @@ export const Form = styled.form`
   margin: 0 0 15px 0;
 `;
 export const Input = styled.input`
+  ${({ theme }) =>
+    theme?.chatApp?.peopleArea?.searchInput
+      ? { ...theme?.chatApp?.peopleArea?.searchInput }
+      : null}
   width: 100%;
-  background-color: #0c0f1c;
-  color: #b5bad3;
   padding: 0 0 0 15px;
   font-size: 0.9em;
   border-radius: 7px;
@@ -182,25 +182,34 @@ export const Input = styled.input`
   outline: none !important;
 `;
 export const Button = styled.button`
+  ${({ theme }) =>
+    theme?.chatApp?.peopleArea?.newChatButton
+      ? { ...theme?.chatApp?.peopleArea?.newChatButton }
+      : null}
   width: 56px;
   height: 30px;
   border: none;
-  background-color: #0c0f1c;
   border-radius: 7px;
   margin-left: 7px;
   cursor: pointer;
 `;
 
 export const PencilIcon = styled(PencilSVG)`
+  ${({ theme }) =>
+    theme?.chatApp?.peopleArea?.newChatButton?.icon
+      ? { ...theme?.chatApp?.peopleArea?.newChatButton?.icon }
+      : null}
   width: 12px;
   height: 12px;
-  fill: #b5bad3;
 `;
 
 export const ClosePeopleAreaIcon = styled(XSVG)`
   width: 22px;
   height: 22px;
-  fill: #b5bad3;
+  ${({ theme }) =>
+    theme?.chatApp?.peopleArea?.closePeopleAreaIcon
+      ? { ...theme?.chatApp?.peopleArea?.closePeopleAreaIcon }
+      : null}
 `;
 
 export const PeopleItemContainer = styled.div`
@@ -216,28 +225,35 @@ export const PeopleItemContainer = styled.div`
   transition: background-color 0.3s ease-out, opacity 0.3s ease-out;
   opacity: 0.5;
   &.active {
-    background-color: rgba(12, 15, 28, 0.5);
-    opacity: 1;
+    ${({ theme }) =>
+      theme?.chatApp?.peopleArea?.child?.activeChild
+        ? { ...theme?.chatApp?.peopleArea?.child?.activeChild }
+        : null}
     .people-item-settings-button {
-      opacity: 0.5;
+      ${({ theme }) =>
+        theme?.chatApp?.peopleArea?.child?.peopleItemSettingsButton
+          ? { ...theme?.chatApp?.peopleArea?.child?.peopleItemSettingsButton }
+          : null}
     }
   }
-  &:hover {
-    background-color: rgba(12, 15, 28, 0.5);
-    opacity: 1;
-    .people-item-settings-button {
-      opacity: 0.5;
-    }
-  }
+  ${({ theme }) =>
+    theme?.chatApp?.peopleArea?.child?.defaultItem
+      ? { ...theme?.chatApp?.peopleArea?.child?.defaultItem }
+      : null}
 `;
 
 export const UserProfile = styled.div`
   width: 45px;
   height: 45px;
   flex: 0 0 45px;
-  background: #0c0f1c url(${(props) => props.image ?? ""}) center no-repeat;
   background-size: cover;
   border-radius: 50%;
+  background: ${({ theme }) =>
+      theme?.chatApp?.peopleArea?.defaultBackground
+        ? theme?.chatApp?.peopleArea?.defaultBackground
+        : null}
+    url(${(props) => props.image ?? ""}) center no-repeat;
+  background-size: cover;
 `;
 
 export const PeopleItemContent = styled.div`
@@ -250,56 +266,71 @@ export const PeopleItemContent = styled.div`
 export const PeopleItemTitle = styled.span`
   width: 100%;
   font-size: 1em;
-  color: #b5bad3;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  transition: color .3s ease-out;
+  ${({ theme }) =>
+    theme?.chatApp?.peopleArea?.child?.activeChild?.title
+      ? { ...theme?.chatApp?.peopleArea?.child?.activeChild?.title }
+      : null}
 `;
 export const PeopleItemDescription = styled.span`
-  // width:calc(100% - 55px);
   width: 100%;
   font-size: 0.8em;
-  color: #b5bad3;
-  opacity: 0.4;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  transition: color .3s ease-out;
+  ${({ theme }) =>
+    theme?.chatApp?.peopleArea?.child?.activeChild?.description
+      ? { ...theme?.chatApp?.peopleArea?.child?.activeChild?.description }
+      : null}
 `;
 
 export const PeopleItemSettingsIcon = styled(ThreeDotsSVG)`
   width: 12px;
   height: 12px;
-  fill: #b5bad3;
   position: absolute;
   top: 5px;
   right: 10px;
   cursor: pointer;
   opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out, fill 0.3s ease-out;
   &:hover {
     opacity: 1 !important;
   }
+  ${({ theme }) =>
+    theme?.chatApp?.peopleArea?.child?.peopleItemSettingsIcon
+      ? { ...theme?.chatApp?.peopleArea?.child?.peopleItemSettingsIcon }
+      : null}
 `;
 
 export const PeopleItemTime = styled.span`
   font-size: 0.65em;
   font-weight: 600;
-  color: #707382;
   position: absolute;
   bottom: 2px;
   right: 10px;
+  ${({ theme }) =>
+    theme?.chatApp?.peopleArea?.child?.defaultItem?.peopleItemTime
+      ? { ...theme?.chatApp?.peopleArea?.child?.defaultItem?.peopleItemTime }
+      : null}
 `;
 
 export const ContentAreaHeader = styled.div`
   width: 100%;
   height: auto;
   max-height: 65px;
-  background-color: #0b0d19;
   display: flex;
   align-items: center;
   padding: 7px 0 7px 10px;
   grid-area: header;
   z-index: 1;
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea?.header
+      ? { ...theme?.chatApp?.contentArea?.header }
+      : null}
   .header-style {
     width: ${(props) =>
       `${
@@ -331,16 +362,17 @@ export const ContentHeaderTextArea = styled.div`
 
 export const ContentHeaderTitle = styled.span`
   font-size: 1.05em;
-  color: #b5bad3;
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea?.header?.title
+      ? { ...theme?.chatApp?.contentArea?.header?.title }
+      : null}
 `;
 export const ContentHeaderStatus = styled.span`
   font-size: 0.75em;
-  &.online {
-    color: #00ff80;
-  }
-  &.offline {
-    color: #ff415e;
-  }
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea?.header?.status
+      ? { ...theme?.chatApp?.contentArea?.header?.status }
+      : null}
 `;
 
 export const ContentHeaderIconContainer = styled.div`
@@ -352,17 +384,23 @@ export const ContentHeaderIconContainer = styled.div`
 export const ContentHeaderSettingsIcon = styled(SettingsSVG)`
   width: 17px;
   height: 17px;
-  fill: whitesmoke;
   cursor: pointer;
   margin: 0 10px;
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea?.header?.settingsIcon
+      ? { ...theme?.chatApp?.contentArea?.header?.settingsIcon }
+      : null}
 `;
 
 export const ContentHeaderPeopleIcon = styled(PeopleSVG)`
   width: 17px;
   height: 17px;
-  fill: whitesmoke;
   cursor: pointer;
   margin: 0 10px;
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea?.header?.peopleIcon
+      ? { ...theme?.chatApp?.contentArea?.header?.peopleIcon }
+      : null}
 `;
 
 export const MessageArea = styled.div`
@@ -375,8 +413,8 @@ export const MessageArea = styled.div`
   position: relative;
 
   .message-style {
-    width:50px;
-    height:50px;
+    width: 50px;
+    height: 50px;
     flex: 0 0 50px;
   }
 `;
@@ -416,9 +454,11 @@ export const MessageInput = styled.textarea`
   outline: none !important;
   overflow: hidden !important;
   border-radius: 7px;
-  background-color: #0c0f1c;
-  color: #b5bad3;
   padding: 0.73em 0 0.73em 10px;
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea?.messageInput
+      ? { ...theme?.chatApp?.contentArea?.messageInput }
+      : null}
 `;
 export const MessageSubmit = styled.button`
   width: 80px;
@@ -426,14 +466,19 @@ export const MessageSubmit = styled.button`
   border: none;
   margin-left: 5px;
   border-radius: 7px;
-  background-color: #0c0f1c;
-  color: #b5bad3;
   cursor: pointer;
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea?.submitButton
+      ? { ...theme?.chatApp?.contentArea?.submitButton }
+      : null}
 `;
 export const SendMessageIcon = styled(SendMessageSVG)`
   width: 20px;
   height: 20px;
-  fill: #b5bad3;
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea?.submitButton?.icon
+      ? { ...theme?.chatApp?.contentArea?.submitButton?.icon }
+      : null}
 `;
 
 export const MessageItem = styled.div`
@@ -451,10 +496,13 @@ export const MessageItem = styled.div`
 export const MessageItemTextContainer = styled.div`
   width: 60%;
   height: auto;
-  background-color: #0d101e;
   margin: 25px 7px 0 7px;
   padding: 5px 10px;
   border-radius: 7px;
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea?.messageItem
+      ? { ...theme?.chatApp?.contentArea?.messageItem }
+      : null}
 `;
 
 export const MessageItemText = styled.pre`
@@ -462,5 +510,8 @@ export const MessageItemText = styled.pre`
   font-size: 0.85em;
   white-space: pre-wrap;
   margin: 0;
-  color: #b5bad3;
+  ${({ theme }) =>
+    theme?.chatApp?.contentArea?.messageItem?.text
+      ? { ...theme?.chatApp?.contentArea?.messageItem?.text }
+      : null}
 `;

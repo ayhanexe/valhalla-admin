@@ -10,7 +10,7 @@ class UICardsPage extends Component {
           <div className="col-12">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Simple Card</tc.TutorialBlockTitle>
-              <div className="card bg-dark">
+              <div className="card bg-dark text-light">
                 <div className="card-body">
                   This is some text within a card body.
                 </div>
@@ -32,7 +32,7 @@ class UICardsPage extends Component {
                 items are placed in a<code>.card-body</code> item, the card
                 title and subtitle are aligned nicely.
               </tc.TutorialBlockText>
-              <div className="card bg-dark">
+              <div className="card bg-dark text-light">
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <h6 className="card-subtitle mb-2 text-muted">
@@ -52,7 +52,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-4">
+          <div className="col-4 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Images</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>
@@ -80,7 +80,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-4">
+          <div className="col-4 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Images</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>
@@ -106,7 +106,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-4">
+          <div className="col-4 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Image overlays</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>
@@ -136,7 +136,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-4">
+          <div className="col-4 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>List groups</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>
@@ -157,7 +157,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-4">
+          <div className="col-4 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>
                 List groups with header
@@ -178,7 +178,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-4">
+          <div className="col-4 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>
                 List groups with footer
@@ -193,7 +193,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-6">
+          <div className="col-6 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Kitchen sink</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>
@@ -241,7 +241,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-6">
+          <div className="col-6 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>
                 Kitchen sink with footer image
@@ -291,7 +291,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-6">
+          <div className="col-6 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Header</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>
@@ -312,7 +312,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-6">
+          <div className="col-6 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Footer</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>
@@ -334,7 +334,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-12">
+          <div className="col-12 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Navigation</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>
@@ -419,7 +419,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-12 offset-0">
+          <div className="col-12 text-light offset-0">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Horizontal</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>
@@ -463,7 +463,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-12">
+          <div className="col-12 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>
                 Background and color
@@ -682,7 +682,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-12">
+          <div className="col-12 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Card groups</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>
@@ -756,7 +756,7 @@ class UICardsPage extends Component {
               </div>
             </tc.TutorialBlock>
           </div>
-          <div className="col-12">
+          <div className="col-12 text-light">
             <tc.TutorialBlock>
               <tc.TutorialBlockTitle>Grid cards</tc.TutorialBlockTitle>
               <tc.TutorialBlockText>

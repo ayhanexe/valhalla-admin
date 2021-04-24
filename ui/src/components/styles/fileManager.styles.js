@@ -100,7 +100,8 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
 
-  background-color: #090b14;
+  ${({ theme }) =>
+    theme?.fileManagerApp ? { ...theme?.fileManagerApp } : null}
 
   border-radius: 10px;
 
@@ -123,7 +124,8 @@ export const Header = styled.div`
   width: 100%;
   height: 90px;
 
-  background-color: #060811;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header ? { ...theme?.fileManagerApp?.header } : null}
 
   display: flex;
   align-items: center;
@@ -134,7 +136,10 @@ export const Header = styled.div`
 export const SidebarIcon = styled(ListSVG)`
   width: 23px;
   height: 23px;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.sidebarIcon
+      ? { ...theme?.fileManagerApp?.header?.sidebarIcon }
+      : null}
 
   position: absolute;
   top: 10px;
@@ -165,13 +170,17 @@ export const TabsContainer = styled.div`
 export const TabItem = styled.div`
   max-width: 150px;
   height: 25px;
-  background-color: #03040a;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   opacity: 0.5;
+
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.tabs?.tabItem
+      ? { ...theme?.fileManagerApp?.header?.tabs?.tabItem }
+      : null}
 
   padding: 5px 0;
   margin: 0 5px;
@@ -192,8 +201,12 @@ export const TabItem = styled.div`
 const NewTabButtonBackground = styled.div`
   width: 20px;
   height: 15px;
-  background-color: #03040a;
   border-radius: 5px;
+
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.tabs?.newTabButton
+      ? { ...theme?.fileManagerApp?.header?.tabs?.newTabButton }
+      : null}
 
   display: flex;
   align-items: center;
@@ -212,7 +225,11 @@ const NewTabButtonBackground = styled.div`
 const NewTabButtonIcon = styled(PlusSVG)`
   width: 15px;
   height: 15px;
-  fill: #5f647a;
+
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.tabs?.newTabButton?.icon
+      ? { ...theme?.fileManagerApp?.header?.tabs?.newTabButton?.icon }
+      : null}
 `;
 
 export const NewTabButton = (props) => (
@@ -224,7 +241,10 @@ export const NewTabButton = (props) => (
 export const TabText = styled.span`
   font-size: 0.8em;
   font-weight: 500;
-  color: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.tabs?.tabItem?.tabText
+      ? { ...theme?.fileManagerApp?.header?.tabs?.tabItem?.tabText }
+      : null}
 `;
 
 export const NavigatorButtonsContainer = styled.div`
@@ -244,11 +264,14 @@ export const NavigatorButtonsContainer = styled.div`
 const PrevNavigateButtonBackground = styled.div`
   width: 30px;
   height: 30px;
-  background-color: #131729;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.navigators?.prev
+      ? { ...theme?.fileManagerApp?.header?.navigators?.prev }
+      : null}
 
   border-radius: 50%;
 
@@ -260,11 +283,14 @@ const PrevNavigateButtonBackground = styled.div`
 const NextNavigateButtonBackground = styled.div`
   width: 25px;
   height: 25px;
-  background-color: #131729;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.navigators?.next
+      ? { ...theme?.fileManagerApp?.header?.navigators?.next }
+      : null}
 
   border-radius: 50%;
 
@@ -282,14 +308,20 @@ const NextNavigateButtonBackground = styled.div`
 const PrevNavigateIcon = styled(ArrowLeftSVG)`
   width: 15px;
   height: 15px;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.navigators?.prev?.icon
+      ? { ...theme?.fileManagerApp?.header?.navigators?.prev?.icon }
+      : null}
 
   margin: 0 1px 0 0;
 `;
 const NextNavigateIcon = styled(ArrowRightSVG)`
   width: 15px;
   height: 15px;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.navigators?.prev?.icon
+      ? { ...theme?.fileManagerApp?.header?.navigators?.prev?.icon }
+      : null}
 
   margin: 0 0 0 1px;
 `;
@@ -323,7 +355,10 @@ export const BreadcrumbContainer = styled.div`
 export const BreadcrumbRefreshButton = styled(RefreshSVG)`
   width: 17px;
   height: 17px;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.breadcrumb?.refreshIcon
+      ? { ...theme?.fileManagerApp?.header?.breadcrumb?.refreshIcon }
+      : null}
 
   margin: 0 5px;
 
@@ -341,7 +376,10 @@ export const BreadcrumbRefreshButton = styled(RefreshSVG)`
 export const BreadcrumbPreviousNavigate = styled(ArrowUpSVG)`
   width: 17px;
   height: 17px;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.breadcrumb?.prev
+      ? { ...theme?.fileManagerApp?.header?.breadcrumb?.prev }
+      : null}
 
   margin: 0 5px;
 
@@ -358,8 +396,11 @@ export const BreadcrumbPreviousNavigate = styled(ArrowUpSVG)`
 const BreadcrumbHistoryButtonCSS = styled.div`
   width: 30px;
   height: 17px;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.breadcrumb?.history
+      ? { ...theme?.fileManagerApp?.header?.breadcrumb?.history }
+      : null}
 
-  background-color: #020307;
   border-radius: 5px;
 
   display: flex;
@@ -383,7 +424,10 @@ const BreadcrumbHistoryButtonCSS = styled.div`
 export const BreadcrumbHistoryButtonDotts = styled.div`
   width: 2px;
   height: 2px;
-  background-color: rgba(196, 196, 196, 0.5);
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.breadcrumb?.history?.dotts
+      ? { ...theme?.fileManagerApp?.header?.breadcrumb?.history?.dotts }
+      : null}
 
   position: relative;
 
@@ -393,8 +437,10 @@ export const BreadcrumbHistoryButtonDotts = styled.div`
     content: "";
     width: 2px;
     height: 2px;
-
-    background-color: rgba(196, 196, 196, 0.5);
+    ${({ theme }) =>
+      theme?.fileManagerApp?.header?.breadcrumb?.history?.dotts
+        ? { ...theme?.fileManagerApp?.header?.breadcrumb?.history?.dotts }
+        : null}
 
     border-radius: 50%;
 
@@ -407,8 +453,10 @@ export const BreadcrumbHistoryButtonDotts = styled.div`
     content: "";
     width: 2px;
     height: 2px;
-
-    background-color: rgba(196, 196, 196, 0.5);
+    ${({ theme }) =>
+      theme?.fileManagerApp?.header?.breadcrumb?.history?.dotts
+        ? { ...theme?.fileManagerApp?.header?.breadcrumb?.history?.dotts }
+        : null}
 
     border-radius: 50%;
 
@@ -426,18 +474,21 @@ export const BreadcrumbHistoryButton = (props) => (
 
 const BreadcrumbItemContainer = styled.div`
   height: 20px;
-  font-size:1vw;
-  white-space:nowrap;
-  text-overflow:ellipsis;
+  font-size: 1vw;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   display: flex;
   align-items: center;
-  overflow-x:auto;
+  overflow-x: auto;
 `;
 
 const BreadcrumbItemIcon = styled(ArrowRightSVG)`
   width: 1.2vw;
   height: 1.2vw;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.breadcrumb?.item
+      ? { ...theme?.fileManagerApp?.header?.breadcrumb?.item }
+      : null}
 
   margin: 0 5px 0 5px;
 
@@ -455,13 +506,12 @@ const BreadcrumbItemIcon = styled(ArrowRightSVG)`
 const BreadcrumbEffectContainer = styled.div`
   padding: 2px 10px;
   border-radius: 5px;
-  background-color: rgba(4, 5, 12, 0);
   transition: background-color 0.3s ease-out;
   cursor: pointer;
-
-  &:hover {
-    background-color: rgba(4, 5, 12, 1);
-  }
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.breadcrumb?.effectContainer
+      ? { ...theme?.fileManagerApp?.header?.breadcrumb?.effectContainer }
+      : null}
 
   &.deactive {
     opacity: 0.5 !important;
@@ -472,14 +522,20 @@ const BreadcrumbEffectContainer = styled.div`
 const BreadcrumbFolderIcon = styled(FolderSVG)`
   width: 1.4vw;
   height: 1.4vw;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.breadcrumb?.folder
+      ? { ...theme?.fileManagerApp?.header?.breadcrumb?.folder }
+      : null}
 
   margin: 0 5px 0 0;
 `;
 
 const BreadcrumbItemText = styled.span`
   font-size: 0.85em;
-  color: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.header?.breadcrumb?.item?.text
+      ? { ...theme?.fileManagerApp?.header?.breadcrumb?.item?.text }
+      : null}
 `;
 
 export const BreadcrumbItem = (props) => (
@@ -504,8 +560,10 @@ export const ContentContainer = styled.div`
 export const Sidebar = styled.div`
   width: 250px;
   height: 100%;
-
-  background-color: #060811;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.sidebar
+      ? { ...theme?.fileManagerApp?.sidebar }
+      : null}
 `;
 
 export const Content = styled.div`
@@ -523,9 +581,12 @@ export const SidebarItemsGroup = styled.div`
 
   display: flex;
   flex-direction: column;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.sidebar?.itemsGroup
+      ? { ...theme?.fileManagerApp?.sidebar?.itemsGroup }
+      : null}
 
   padding: 30px 10px 0 10px;
-  color: #5f647a;
 
   overflow: auto;
 `;
@@ -546,7 +607,10 @@ export const SidebarDropdownHeader = styled.div`
   width: 100%;
   height: 30px;
   flex: 0 0 30px;
-  background-color: #0a0c19;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.sidebar?.dropdownHeader
+      ? { ...theme?.fileManagerApp?.sidebar?.dropdownHeader }
+      : null}
 
   display: flex;
   align-items: center;
@@ -579,7 +643,13 @@ export const SidebarDropdownContainer = styled.div`
       margin-bottom: 0;
     }
     .sidebar-inner-dropdown-header {
-      background-color: #0a0c19;
+      ${({ theme }) =>
+        theme?.fileManagerApp?.sidebar?.innerDropdown?.innerDropdownHeader
+          ? {
+              ...theme?.fileManagerApp?.sidebar?.innerDropdown
+                ?.innerDropdownHeader,
+            }
+          : null}
     }
   }
 `;
@@ -595,18 +665,18 @@ export const SidebarInnerDropdown = styled.div`
   border-radius: 5px;
   padding: 0;
   overflow: hidden;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.sidebar?.innerDropdown
+      ? { ...theme?.fileManagerApp?.sidebar?.innerDropdown }
+      : null}
 
   &.opened {
     & > .sidebar-inner-dropdown-header > .sidebar-item-dropdown-icon {
       transform: rotateZ(90deg);
     }
-    background-color: #0a0c19;
+
     padding: 5px;
     height: auto;
-    .sidebar-inner-dropdown-header,
-    .sidebar-inner-dropdown-item {
-      background-color: #070912;
-    }
     .opened {
       padding: 0;
     }
@@ -649,13 +719,15 @@ export const SidebarInnerDropdownItem = styled.div`
   align-items: center;
   padding: 0 0 0 10px;
 
-  background-color: #0a0c19;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.sidebar?.innerDropdown.item
+      ? { ...theme?.fileManagerApp?.sidebar?.innerDropdown.item }
+      : null}
   cursor: pointer;
 `;
 export const SidebarItem = styled.div`
   width: 100%;
   height: 30px;
-  background-color: #0a0c19;
 
   margin: 5px 0;
 
@@ -680,7 +752,10 @@ export const SidebarItemDropdownIcon = styled(ArrowRightSVG)`
   width: 12px;
   height: 12px;
   flex: 0 0 12px;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.sidebar?.item?.dropdownIcon
+      ? { ...theme?.fileManagerApp?.sidebar?.item?.dropdownIcon }
+      : null}
 
   display: block;
   margin: 0 7px 0 0;
@@ -694,7 +769,10 @@ export const SidebarItemDropdownFolderIcon = styled(FolderSVG)`
   width: 11px;
   height: 11px;
   flex: 0 0 11px;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.sidebar?.item?.folderIcon
+      ? { ...theme?.fileManagerApp?.sidebar?.item?.folderIcon }
+      : null}
 
   display: block;
   margin: 0 10px 0 0;
@@ -725,12 +803,14 @@ export const PathContentContainer = styled.div`
 `;
 
 export const PathTitle = styled.h3`
-  font-size:2vw;
+  font-size: 2vw;
   position: absolute;
   top: 20px;
   left: 30px;
-
-  color: rgba(95, 100, 122, 0.5);
+  ${({ theme }) =>
+    theme?.fileManagerApp?.content?.pathTitle
+      ? { ...theme?.fileManagerApp?.content?.pathTitle }
+      : null}
 `;
 
 const FileContainer = styled.div`
@@ -741,18 +821,19 @@ const FileContainer = styled.div`
   cursor: pointer;
 
   margin: 10px;
-
-  &:hover {
-    .file-content-container {
-      background-color: rgba(20, 25, 45, 0.5);
-    }
-  }
+  ${({ theme }) =>
+    theme?.fileManagerApp?.content?.fileItem
+      ? { ...theme?.fileManagerApp?.content?.fileItem }
+      : null}
 `;
 
 const FileContentContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgba(20, 25, 45, 0.2);
+  ${({ theme }) =>
+    theme?.fileManagerApp?.content?.fileItem?.content
+      ? { ...theme?.fileManagerApp?.content?.fileItem?.content }
+      : null}
 
   border-radius: 10px;
 
@@ -769,11 +850,17 @@ const FileIcon = styled(FileSVG)`
   width: 100%;
   height: 100%;
   flex: 0 0 100%;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.content?.fileItem?.content?.icon
+      ? { ...theme?.fileManagerApp?.content?.fileItem?.content?.icon }
+      : null}
 `;
 
 const FileType = styled.span`
-  color: #090b14;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.content?.fileItem?.content?.type
+      ? { ...theme?.fileManagerApp?.content?.fileItem?.content?.type }
+      : null}
   font-size: 1.2em;
 
   position: absolute;
@@ -786,6 +873,10 @@ const FileName = styled.span`
   width: 100%;
   display: block;
   text-align: center;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.content?.fileItem?.content?.name
+      ? { ...theme?.fileManagerApp?.content?.fileItem?.content?.name }
+      : null}
 
   font-size: 0.85em;
   margin: 2px 0;
@@ -815,18 +906,20 @@ const FolderContainer = styled.div`
 
   margin: 10px;
   cursor: pointer;
-  &:hover {
-    .folder-content-container {
-      background-color: rgba(20, 25, 45, 0.5);
-    }
-  }
+
+  ${({ theme }) =>
+    theme?.fileManagerApp?.content?.folderItem
+      ? { ...theme?.fileManagerApp?.content?.folderItem }
+      : null}
 `;
 
 const FolderContentContainer = styled.div`
   width: 100%;
   height: 100%;
-
-  background-color: rgba(20, 25, 45, 0.2);
+  ${({ theme }) =>
+    theme?.fileManagerApp?.content?.folderItem?.content
+      ? { ...theme?.fileManagerApp?.content?.folderItem?.content }
+      : null}
 
   position: relative;
 
@@ -838,12 +931,19 @@ const FolderIcon = styled(FolderSVG)`
   width: 100%;
   height: 100%;
   flex: 0 0 100%;
-  fill: #5f647a;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.content?.folderItem?.content?.icon
+      ? { ...theme?.fileManagerApp?.content?.folderItem?.content?.icon }
+      : null}
 `;
 const FolderName = styled.span`
   width: 100%;
   display: block;
   text-align: center;
+  ${({ theme }) =>
+    theme?.fileManagerApp?.content?.folderItem?.content?.name
+      ? { ...theme?.fileManagerApp?.content?.folderItem?.content?.name }
+      : null}
 
   font-size: 0.85em;
   margin: 2px 0;

@@ -22,3 +22,4 @@ export { default as TypographyPage } from "./typography.page";
 export { default as TablesStandartPage } from "./tables.standart.page";
 export { default as TablesPluginPage } from "./tables.plugin.page";
 export { default as NotFoundPage } from "./404.page";
+export { default as LoginPage } from "./login.page";

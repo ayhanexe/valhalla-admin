@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: #090b14;
+  ${({ theme }) =>
+    theme?.smallLineChart ? { ...theme?.smallLineChart } : null}
   border-radius: 0.5rem;
   position: relative;
   overflow: hidden;
@@ -16,17 +17,17 @@ export const ContainerContent = styled.div`
   bottom: 0;
   display: flex;
   flex-direction: column;
-  color: #d5d6ef;
 `;
 
 export const ContainerTitle = styled.span`
   font-size: 2vw;
   font-weight: 900;
-  mix-blend-mode: exclusion;
   white-space: nowrap;
-  
-  @media (max-width:576px) {
-    font-size:4vw;
+  ${({ theme }) =>
+    theme?.smallLineChart?.title ? { ...theme?.smallLineChart?.title } : null}
+
+  @media (max-width: 576px) {
+    font-size: 4vw;
   }
 `;
 
@@ -37,9 +38,9 @@ export const ContainerValue = styled.span`
   position: relative;
   bottom: 0.5vmax;
   white-space: nowrap;
-  
-  @media (max-width:576px) {
-    font-size:4vw;
+
+  @media (max-width: 576px) {
+    font-size: 4vw;
   }
 `;
 
@@ -61,8 +62,6 @@ export const IconContainer = styled.div``;
 export const ChartContainer = styled.div`
   width: 100%;
   height: 50%;
-  backgound-color: blue;
-
   position: absolute;
   top: auto;
   right: auto;

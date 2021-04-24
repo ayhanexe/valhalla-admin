@@ -4,7 +4,7 @@ import { TutorialComponents as tc } from "../components";
 class UIModalsPage extends Component {
   render() {
     return (
-      <div className="container pb-5">
+      <div className="container pb-5 text-light">
         <tc.TutorialTitle>Bootstrap Modals</tc.TutorialTitle>
         <div className="row p-0 m-0">
           <div className="col-12">

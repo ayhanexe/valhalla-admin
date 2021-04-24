@@ -21,11 +21,9 @@ export const Container = styled.div`
   top: 0;
   right: ${(props) =>
     props.isRightSidebarOpen ? "0" : "calc(-300px - 2vmax)"};
-  background-color: ${({ theme }) => theme.rightSidebar.backgroundColor};
-  color: ${({ theme }) => theme.rightSidebar.color};
   padding: 15px 25px 0 25px;
-  box-shadow:0 0 5px 0 rgba(0, 0, 0, 0.2);
-  
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+
   z-index: 10;
   @media (min-width: 1441px) {
     width: calc(400px + 10vmax);
@@ -36,6 +34,8 @@ export const Container = styled.div`
     width: 100%;
     right: ${(props) => (props.isRightSidebarOpen ? null : "-100%")};
   }
+
+  ${({ theme }) => (theme?.rightSidebar ? { ...theme?.rightSidebar } : null)}
 `;
 
 export const SidebarContent = styled.div`
@@ -47,7 +47,6 @@ export const SidebarContent = styled.div`
 export const Toggler = styled.div`
   width: 17px;
   height: 25px;
-  background-color: ${({ theme }) => theme.rightSidebar.backgroundColor};
   position: absolute;
   top: 50%;
   left: -17px;
@@ -57,8 +56,9 @@ export const Toggler = styled.div`
   justify-content: center;
   align-items: center;
   transition: left 0.3s ease-out;
-  box-shadow:-2px 0 2px 0 rgba(0, 0, 0, 0.1);
-  
+  box-shadow: -2px 0 2px 0 rgba(0, 0, 0, 0.1);
+  background-color: inherit;
+
   @media (min-width: 1441px) {
     width: calc(20px + 0.5vmax);
     height: calc(35px + 0.5vmax);
@@ -86,15 +86,20 @@ export const ToggleIcon = styled(ChevronLeft)`
     width: 20px;
     height: 20px;
   }
-  ${({ theme }) => theme.rightSidebarTogglerIcon}
 `;
 
 export const RightSidebarTitle = styled.h1`
   margin-bottom: 50px;
   font-size: 2.5em;
   font-weight: 700;
+  ${({ theme }) =>
+    theme?.rightSidebar?.title ? { ...theme?.rightSidebar?.title } : null}
 `;
 export const RightSidebarOptionTitle = styled.h5`
   margin: 20px 0 10px 0;
   font-size: 0.85em;
+  ${({ theme }) =>
+    theme?.rightSidebar?.optionTitle
+      ? { ...theme?.rightSidebar?.optionTitle }
+      : null}
 `;

@@ -21,9 +21,9 @@ class HellaCheckbox extends Component {
 
     timeline.add([
       gsap.to(point, {
-        left: this.props.checked ? 0 : parent.clientWidth / 2,
-        duration: 0.15,
-        ease: "power.out",
+        left: this.props.checked ? 0 : "50%",
+        duration: 0.3,
+        ease: "power.in",
       }),
     ]);
   }

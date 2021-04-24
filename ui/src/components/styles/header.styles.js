@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const LockSVG = (props) => (
   <svg
@@ -20,8 +20,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px 0 0 0;
-  position:relative;
-  z-index:5;
+  position: relative;
+  z-index: 5;
+
+  ${({ theme }) => (theme?.header ? { ...theme?.header } : null)}
 `;
 
 export const Header = styled.div`
@@ -29,7 +31,6 @@ export const Header = styled.div`
   height: 50px;
   font-size: 1.5em;
   font-weight: bold;
-  background-color: ${({ theme }) => theme.header.background};
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -38,12 +39,18 @@ export const Header = styled.div`
 
 export const HeaderTitle = styled(Link)`
   margin-right: auto;
+  ${({ theme }) =>
+    theme?.header?.headerTitle ? { ...theme?.header?.headerTitle } : null}
 `;
 
 export const LockScreenIcon = styled(LockSVG)`
   width: 15px;
   height: 15px;
-  fill: whitesmoke;
   cursor: pointer;
   margin: 0 10px;
+
+  ${({ theme }) =>
+    theme?.header?.headerLockscreenIcon
+      ? { ...theme?.header?.headerLockscreenIcon }
+      : null}
 `;

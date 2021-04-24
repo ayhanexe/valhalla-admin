@@ -50,12 +50,13 @@ const Container = styled.div`
   font-family: ${(props) => String(props.$fontFamily).toLowerCase()};
   font-weight: ${(props) => String(props.$fontWeight).toLowerCase()};
   font-size: ${(props) => String(props.$fontSize).toLowerCase()};
-  ${({ theme }) => theme.body}
+  
+  ${({ theme }) => theme?.body ? {...theme?.body} : null}
 `;
 
 const AppContent = styled.div`
   width: 100%;
-  height: calc(100% * 4);
+  height: auto;
 `;
 
 class App extends Component {

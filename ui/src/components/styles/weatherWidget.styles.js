@@ -61,10 +61,10 @@ const LeftSVG = (props) => (
 export const Container = styled.div`
   width: 100%;
   height: auto;
-  background-color: #040610;
-  color: #585d78;
   font-size: calc(0.2em + 0.7vw);
   font-weight: 500;
+
+  ${({ theme }) => (theme?.weatherWidget ? { ...theme?.weatherWidget } : null)}
 
   position: relative;
   border-radius: 10px;
@@ -161,6 +161,10 @@ export const WeatherIcon = styled.div`
 
 export const Icon = styled(FontAwesomeIcon)`
   font-size: 9vw;
+  ${({ theme }) =>
+    theme?.weatherWidget?.icons?.mainScreenWeatherIcon
+      ? { ...theme?.weatherWidget?.icons?.mainScreenWeatherIcon }
+      : null}
 `;
 
 export const CurrentLocation = styled.div`
@@ -199,8 +203,12 @@ export const Celsius = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
   &::after {
+    --border: ${(props) =>
+      `${props.radius ? `calc((${props.radius} / 100) * 20)` : "3px"} solid ${
+        props.color ?? "%"
+      }`};
     content: "";
     width: ${(props) => `${props.radius}` || "15px"};
     height: ${(props) => `${props.radius}` || "15px"};
@@ -209,16 +217,25 @@ export const Celsius = styled.div`
     right: ${(props) =>
       `${props.radius ? `calc(-${props.right ?? props.radius} / 2)` : "-7px"}`};
     border-radius: 50%;
-    border: ${(props) =>
+    border:${(props) =>
       `${props.radius ? `calc((${props.radius} / 100) * 20)` : "3px"} solid ${
-        props.color ?? "#555a74"
-      }`}
+        props.color ?? "%"
+      }`.replace(
+        "%",
+        `${
+          props?.theme?.weatherWidget?.icons?.celcius?.color
+            ? props?.theme?.weatherWidget?.icons?.celcius?.color
+            : null
+        }`
+      )};
 `;
 
 export const WeatherFooter = styled.div`
   grid-area: weather-footer;
   position: relative;
-  background: linear-gradient(rgba(4, 6, 16, 0.7), rgba(0, 2, 5, 0.8));
+
+  ${({ theme }) =>
+    theme?.weatherWidget?.footer ? { ...theme?.weatherWidget?.footer } : null}
 
   display: flex;
   align-items: center;
@@ -237,6 +254,8 @@ export const FooterSector = styled.div`
   width: 100%;
   height: 100%;
 
+  ${({ theme }) => (theme?.footer ? { ...theme?.footer } : null)}
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -248,22 +267,31 @@ export const SunIcon = styled(SunSVG)`
   width: 1.7vw;
   height: 1.7vw;
   flex: 0 0 1.7vw;
-  fill: rgb(88, 93, 120);
   margin: 0 5px 0 0;
+  ${({ theme }) =>
+    theme?.weatherWidget?.icons?.sun
+      ? { ...theme?.weatherWidget?.icons?.sun }
+      : null}
 `;
 export const WindIcon = styled(WindSVG)`
   width: 1.7vw;
   height: 1.7vw;
   flex: 0 0 1.7vw;
-  fill: rgb(88, 93, 120);
   margin: 0 5px 0 0;
+  ${({ theme }) =>
+    theme?.weatherWidget?.icons?.wind
+      ? { ...theme?.weatherWidget?.icons?.wind }
+      : null}
 `;
 export const NightIcon = styled(NightSVG)`
   width: 1.7vw;
   height: 1.7vw;
   flex: 0 0 1.7vw;
-  fill: rgb(88, 93, 120);
   margin: 0 5px 0 0;
+  ${({ theme }) =>
+    theme?.weatherWidget?.icons?.night
+      ? { ...theme?.weatherWidget?.icons?.night }
+      : null}
 `;
 
 export const SectorValue = styled.div`
@@ -289,7 +317,10 @@ export const SectorContent = styled.div`
 export const WeatherToggler = styled.div`
   width: 1.5vw;
   height: 1.5vw;
-  background-color: rgba(88, 93, 120, 0.5);
+  ${({ theme }) =>
+    theme?.weatherWidget?.icons?.toggler
+      ? { ...theme?.weatherWidget?.icons?.toggler }
+      : null}
   border-radius: 50%;
 
   padding: 5px;
@@ -308,13 +339,22 @@ export const WeatherToggler = styled.div`
 `;
 
 export const WeatherTogglerIcon = styled(RightSVG)`
-  fill: rgba(88, 93, 120, 1);
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  ${({ theme }) =>
+    theme?.weatherWidget?.icons.toggler.icon
+      ? { ...theme?.weatherWidget?.icons.toggler.icon }
+      : null}
 `;
 
 export const DetailsPageContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #040610;
+  ${({ theme }) =>
+    theme?.weatherWidget?.detailsPage
+      ? { ...theme?.weatherWidget?.detailsPage }
+      : null}
 
   display: flex;
   flex-direction: column;
@@ -331,6 +371,10 @@ export const DetailsHeader = styled.div`
   height: auto;
 
   padding: 10px 0 10px 15px;
+  ${({ theme }) =>
+    theme?.weatherWidget?.detailsPage?.header
+      ? { ...theme?.weatherWidget?.detailsPage?.header }
+      : null}
 `;
 
 export const DetailsTimelineContainer = styled.div`
@@ -356,24 +400,10 @@ export const DetailsTimelineItem = styled.div`
 
   cursor: pointer;
 
-  transition: color 0.2s ease-out;
-
-  &:hover {
-    color: yellow;
-  }
-
-  &.active {
-    color: yellow;
-    &::after {
-      content: "";
-      width: 50%;
-      height: 1px;
-      background-color: yellow;
-
-      position: absolute;
-      top: 100%;
-    }
-  }
+  ${({ theme }) =>
+    theme?.weatherWidget?.detailsPage?.detailsTimeline?.child
+      ? { ...theme?.weatherWidget?.detailsPage?.detailsTimeline?.child }
+      : null}
 `;
 
 export const DetailsContentContainer = styled.div`
@@ -390,12 +420,15 @@ export const DetailsTitle = styled.span`
   font-size: 1.2vw;
   font-weight: 600;
   margin: 10px 2.5vw 10px 2.5vw;
+  ${({ theme }) =>
+    theme?.weatherWidget?.detailsPage?.title
+      ? { ...theme?.weatherWidget?.detailsPage?.title }
+      : null}
 `;
 
 export const DetailsContentSectorContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-colo: yellow;
 
   display: flex;
   justify-content: center;
@@ -414,7 +447,10 @@ export const DetailsTABLE = styled.table`
 
   display: block;
 
-  color: #272b3a;
+  ${({ theme }) =>
+    theme?.weatherWidget?.detailsPage?.detailsTable
+      ? { ...theme?.weatherWidget?.detailsPage?.detailsTable }
+      : null}
 
   &:nth-child(1) {
     margin-right: 2.5vw;
@@ -528,15 +564,26 @@ export const DetailsChartTimelineItem = styled.div`
 
 export const DetailsChartTimelineItemIcon = styled(FontAwesomeIcon)`
   font-size: 1.1vw;
+  ${({ theme }) =>
+    theme?.weatherWidget?.detailsPage?.detailsChartTimeline?.icon
+      ? { ...theme?.weatherWidget?.detailsPage?.detailsChartTimeline?.icon }
+      : null}
 `;
 export const DetailsChartTimelineItemText = styled.span`
   font-size: 0.5vw;
+  ${({ theme }) =>
+    theme?.weatherWidget?.detailsPage?.detailsChartTimeline?.text
+      ? { ...theme?.weatherWidget?.detailsPage?.detailsChartTimeline?.text }
+      : null}
 `;
 
 export const DetailsPageToggler = styled.div`
   width: 1.5vw;
   height: 1.5vw;
-  background-color: rgba(88, 93, 120, 0.5);
+  ${({ theme }) =>
+    theme?.weatherWidget?.icons?.toggler
+      ? { ...theme?.weatherWidget?.icons?.toggler }
+      : null}
   border-radius: 50%;
 
   padding: 5px;
@@ -556,5 +603,8 @@ export const DetailsPageToggler = styled.div`
 `;
 
 export const DetailsTogglerIcon = styled(LeftSVG)`
-  fill: rgba(88, 93, 120, 1);
+  ${({ theme }) =>
+    theme?.weatherWidget?.icons?.toggler?.icon
+      ? { ...theme?.weatherWidget?.icons?.toggler?.icon }
+      : null}
 `;

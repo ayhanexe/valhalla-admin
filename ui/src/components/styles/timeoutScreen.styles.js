@@ -64,7 +64,8 @@ export const BackgroundMediaContainer = styled.div`
   width: 100%;
   height: 100%;
 
-  background: url(${(props) => props.mediaUrl}) center no-repeat;
+  background: ${(props) => props?.theme?.timeoutScreen?.defaultBackground}
+    url(${(props) => props.mediaUrl}) center no-repeat;
   background-size: cover;
 
   position: absolute;
@@ -122,12 +123,18 @@ export const ClockContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  ${({ theme }) =>
+    theme?.timeoutScreen?.clock ? { ...theme?.timeoutScreen?.clock } : null}
 `;
 
 export const ClockValueBase = css`
   font-size: 7vw;
   font-weight: 400;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  ${({ theme }) =>
+    theme?.timeoutScreen?.clock?.value
+      ? { ...theme?.timeoutScreen?.clock?.value }
+      : null}
 `;
 
 export const Hour = styled.span`
@@ -200,9 +207,12 @@ export const NotificationItem = styled.div`
   width: 100%;
   height: auto;
   max-height: 80px;
-  background-color: #151820;
   padding: 2px 2px 5px 2px;
   position: relative;
+  ${({ theme }) =>
+    theme?.timeoutScreen?.notification?.item
+      ? { ...theme?.timeoutScreen?.notification?.item }
+      : null}
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -255,7 +265,10 @@ export const NotificationItemTimeArea = styled.div`
   height: 100%;
 
   font-size: 0.7em;
-  color: rgba(231, 231, 244, 0.5);
+  ${({ theme }) =>
+    theme?.timeoutScreen?.notification?.item?.time
+      ? { ...theme?.timeoutScreen?.notification?.item?.time }
+      : null}
   padding: 0 10px;
 
   grid-area: time-area;
@@ -270,7 +283,10 @@ export const NotificationItemContent = styled.div`
   grid-area: content-area;
   padding: 0 7px 0 7px;
   font-size: 0.85em;
-  color: rgba(231, 231, 244, 0.5);
+  ${({ theme }) =>
+    theme?.timeoutScreen?.notification?.item?.content
+      ? { ...theme?.timeoutScreen?.notification?.item?.content }
+      : null}
   white-space: pre-wrap;
   text-overflow: ellipsis;
 `;
@@ -284,7 +300,10 @@ export const NotificationItemContentText = styled.span`
 export const NotificationItemInfoIcon = styled(InfoSVG)`
   width: 12px;
   height: 12px;
-  fill: rgba(231, 231, 244, 0.5);
+  ${({ theme }) =>
+    theme?.timeoutScreen?.notification?.item?.icons?.infoIcon
+      ? { ...theme?.timeoutScreen?.notification?.item?.icons?.infoIcon }
+      : null}
 `;
 
 export const NotificationItemDeleteIconContainer = styled.div`
@@ -313,14 +332,22 @@ export const NotificationItemDeleteIconContainer = styled.div`
 export const NotificationItemDeleteIcon = styled(TrashSVG)`
   width: 15px;
   height: 15px;
-  fill: #ff4646;
+  ${({ theme }) =>
+    theme?.timeoutScreen?.notification?.item?.icons?.messageDeleteIcon
+      ? {
+          ...theme?.timeoutScreen?.notification?.item?.icons?.messageDeleteIcon,
+        }
+      : null}
 `;
 
 export const NotificationItemTitle = styled.div`
   grid-area: title-area;
   padding-top: 1px;
   font-size: 0.85em;
-  color: rgba(231, 231, 244, 0.5);
+  ${({ theme }) =>
+    theme?.timeoutScreen?.notification?.item?.title
+      ? { ...theme?.timeoutScreen?.notification?.item?.title }
+      : null}
 `;
 
 export const NotificationItemExpandToggler = styled.div`
@@ -342,7 +369,10 @@ export const NotificationItemExpandToggler = styled.div`
     content: "${(props) => (props.$isExpanded ? "shrink" : "expand")}";
     font-size: 0.85em;
     font-weight: 300;
-    color: rgba(231, 231, 244, 0.5);
+    ${({ theme }) =>
+      theme?.timeoutScreen?.notification?.item?.toggler
+        ? { ...theme?.timeoutScreen?.notification?.item?.toggler }
+        : null}
   }
 `;
 
@@ -373,7 +403,10 @@ export const MouseIcon = styled(MouseSVG)`
   width: 30px;
   height: 30px;
   flex: 0 0 30px;
-  fill: rgba(255, 255, 255, 0.5);
+  ${({ theme }) =>
+    theme?.timeoutScreen?.unlockArea?.mouseIcon
+      ? { ...theme?.timeoutScreen?.unlockArea?.mouseIcon }
+      : null}
 
   margin: 0 0 10px 0;
 
@@ -396,6 +429,9 @@ export const UnlockText = styled.span`
   font-size: 1em;
   font-weight: 400;
   white-space: nowrap;
-  color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
+  ${({ theme }) =>
+    theme?.timeoutScreen?.unlockArea?.unlockText
+      ? { ...theme?.timeoutScreen?.unlockArea?.unlockText }
+      : null}
 `;

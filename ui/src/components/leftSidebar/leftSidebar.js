@@ -207,6 +207,11 @@ class LeftSidebar extends Component {
                   isLink: true,
                   to: "/pages/404",
                 },
+                // {
+                //   text: "Login Page",
+                //   isLink: true,
+                //   to: "/pages/login",
+                // },
               ]}
             />
             

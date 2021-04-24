@@ -11,14 +11,21 @@ export const Container = styled.div`
 const HeaderBase = css`
   width: 100%;
   height: 35px;
-  background-color: ${({ theme }) => theme.hellaComponents.button.background};
-  color: ${({ theme }) => theme.hellaComponents.button.color} !important;
   text-decoration: none;
   display: flex;
   align-items: center;
   padding: 2px 10px 0 10px;
   cursor: pointer;
   border-radius: 5px;
+  ${({ theme }) =>
+    theme?.hellaComponents?.button?.header
+      ? { ...theme.hellaComponents.button.header }
+      : null}
+  ${({ theme }) =>
+    theme?.hellaComponents?.button?.header?.text
+      ? { ...theme.hellaComponents.button.header.text }
+      : null}
+
   &:hover span {
     margin-left: 10px;
   }

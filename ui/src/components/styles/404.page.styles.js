@@ -8,7 +8,7 @@ const MoonSVG = (props) => (
     viewBox="0 0 290 290"
     className={`${props.className}`}
   >
-    <circle cx="145" cy="145" r="145" fill="#DDDBD7" />
+    <circle cx="148" cy="140" r="140" fill="#DDDBD7" />
     <path
       fill="#A49C89"
       d="M144 205c16.569 0 29.5-8.431 29.5-25 0-4.843-1.105-9.845-3.083-14.5C165.629 154.231 155.725 145 144 145c-16.569 0-30 13.431-30 30 0 1.932.144 3.763.431 5.5 1.169 7.087 4.717 12.604 10.569 17 5.014 3.766 12.246 7.5 19 7.5z"
@@ -273,7 +273,8 @@ const MoonSVG = (props) => (
 export const PageContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: #0d101e;
+
+  ${({ theme }) => (theme?.notFoundPage ? { ...theme?.notFoundPage } : null)}
 
   position: fixed;
   top: 0;
@@ -295,20 +296,21 @@ export const PageInner = styled.div`
 `;
 
 export const VerticalInnerContent = styled.div`
-  display:flex;
-  flex-direction:column;
-  z-index:10;
-`
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+`;
 
 export const VerticalInnerTitle = styled.span`
-  font-size:4vw;
-  font-weight:700;
-  color:#DDDBD7;
-  text-align:center;
-  @media (max-width:576px) {
-    font-size:7vw;
+  font-size: 4vw;
+  font-weight: 700;
+  text-align: center;
+  ${({ theme }) =>
+    theme?.notFoundPage?.title ? { ...theme?.notFoundPage?.title } : null}
+  @media (max-width: 576px) {
+    font-size: 7vw;
   }
-`
+`;
 
 export const MoonContainer = styled.div`
   width: auto;
@@ -319,47 +321,53 @@ export const MoonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width:576px) {
-    height:28vw;
+  @media (max-width: 576px) {
+    height: 28vw;
   }
 `;
 
 export const FirstFour = styled.span`
-  font-size:15vw;
-  font-weight:700;
-  color:#DDDBD7;
-  @media (max-width:576px) {
-    font-size:25vw;
+  font-size: 15vw;
+  font-weight: 700;
+  ${({ theme }) =>
+    theme?.notFoundPage?.firstFour
+      ? { ...theme?.notFoundPage?.firstFour }
+      : null}
+  @media (max-width: 576px) {
+    font-size: 25vw;
   }
 `;
 export const LastFour = styled.span`
-  font-size:15vw;
-  font-weight:700;
-  color:#DDDBD7;
-  @media (max-width:576px) {
-    font-size:25vw;
+  font-size: 15vw;
+  font-weight: 700;
+  color: #dddbd7;
+  ${({ theme }) =>
+    theme?.notFoundPage?.lastFour ? { ...theme?.notFoundPage?.lastFour } : null}
+  @media (max-width: 576px) {
+    font-size: 25vw;
   }
 `;
 
 export const MoonIcon = styled(MoonSVG)`
   width: 15vw;
   height: 15vw;
-  @media (max-width:576px) {
-    width:25vw;
-    height:25vw;
+  @media (max-width: 576px) {
+    width: 25vw;
+    height: 25vw;
   }
 `;
 
 export const PageText = styled(Link)`
   padding: 0;
   margin: 0;
-  font-size:2vw;
-  font-weight:500;
-  text-align:center;
-  text-decoration:none;
-  color:#DDDBD7 !important;
-  cursor:pointer;
-  @media (max-width:576px) {
-    font-size:4vw;
+  font-size: 2vw;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  ${({ theme }) =>
+    theme?.notFoundPage?.text ? { ...theme?.notFoundPage?.text } : null}
+  @media (max-width: 576px) {
+    font-size: 4vw;
   }
 `;

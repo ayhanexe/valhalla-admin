@@ -186,7 +186,7 @@ class Chat extends Component {
                 image={`${process.env.PUBLIC_URL}/assets/media/profiles/laura-profile.jpg`}
               />
               <s.PeopleItemContent>
-                <s.PeopleItemTitle>Laura S.</s.PeopleItemTitle>
+                <s.PeopleItemTitle className="people-item-title">Laura S.</s.PeopleItemTitle>
                 <s.PeopleItemDescription>
                   You: Hi :) What's the problem?
                 </s.PeopleItemDescription>
@@ -200,7 +200,7 @@ class Chat extends Component {
                 image={`${process.env.PUBLIC_URL}/assets/media/profiles/chocolate-marmalade.jpg`}
               />
               <s.PeopleItemContent>
-                <s.PeopleItemTitle>Chocolate Marmalade</s.PeopleItemTitle>
+                <s.PeopleItemTitle className="people-item-title">Chocolate Marmalade</s.PeopleItemTitle>
                 <s.PeopleItemDescription>
                   Mmmmm.... I'm sooo tasty XD
                 </s.PeopleItemDescription>

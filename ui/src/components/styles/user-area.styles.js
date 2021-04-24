@@ -11,19 +11,20 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   padding: 5px;
-  position:relative;
+  position: relative;
+
+  ${({ theme }) => `${{ ...theme?.userArea }}` ?? null}
 `;
 
 export const ProfileContainer = styled.div`
   width: 40px;
   height: 40px;
   flex: 0 0 40px;
-  background-color: ${({ theme }) => theme.userArea.profileBackground};
   border-radius: 50%;
   margin: 0 0 0 auto;
   overflow: hidden;
-  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  ${({ theme }) => `${{ ...theme?.userArea?.profile }}` ?? null}
 `;
 
 export const Profile = styled.img`
@@ -32,13 +33,13 @@ export const Profile = styled.img`
   border: none;
   object-fit: cover;
   pointer-events: none;
+  ${({ theme }) => `${{ ...theme?.userArea?.profile?.image }}` ?? null}
 `;
 
 export const Dropdown = styled.div`
   width: 150px;
   height: auto;
   flex: 0 0 auto;
-  background-color: ${({ theme }) => theme.userArea.dropdownBackground};
   margin: 10px 0 0 0;
   border-radius: 5px;
   display: flex;
@@ -47,10 +48,12 @@ export const Dropdown = styled.div`
   padding: 0 0 10px 0;
   opacity: 0;
   visibility: hidden;
-  position:absolute;
-  top:100%;
-  right:0;
-  z-index:1;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+  ${({ theme }) =>
+    theme?.userArea?.dropdown ? { ...theme?.userArea?.dropdown } : null}
 `;
 
 export const DropdownHeader = styled.div`
@@ -81,13 +84,24 @@ export const DropdownDescription = styled.span`
 const DropdownItemBase = css`
   width: 90%;
   font-size: 0.6em;
-  background: ${({ theme }) => theme.userArea.dropdownItemBackground};
   color: white !important;
   text-decoration: none;
   padding: 5px 20px;
   display: flex;
   align-items: center;
   border-radius: 3px;
+
+  ${({ theme }) =>
+    theme?.userArea?.dropdown?.child
+      ? { ...theme.userArea.dropdown.child }
+      : null}
+
+  &:hover {
+    ${({ theme }) =>
+      theme?.userArea?.dropdown?.child.hover
+        ? { ...theme.userArea.dropdown.child.hover }
+        : null}
+  }
 `;
 
 export const DropdownItem = styled.div`
@@ -99,6 +113,15 @@ export const DropdownItemLink = styled(Link)`
 
 export const DropdownItemText = styled.span`
   margin-left: 10px;
+  ${({ theme }) =>
+    theme?.userArea?.dropdown?.child?.text
+      ? { ...theme?.userArea?.dropdown?.child?.text }
+      : null}
 `;
 
-export const DropdownItemIcon = styled(FontAwesomeIcon)``;
+export const DropdownItemIcon = styled(FontAwesomeIcon)`
+  ${({ theme }) =>
+    theme?.userArea?.dropdown?.child?.icon
+      ? { ...theme?.userArea?.dropdown?.child?.icon }
+      : null}
+`;
