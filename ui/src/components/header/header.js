@@ -26,22 +26,29 @@ class Header extends Component {
     this.valhallaUtils = new ValhallaUtils();
   }
 
-  componentDidMount() {
-    window.addEventListener("resize", () => {
-      if (this.props.toggleFixedLeftSidebar && this.props.isLeftSidebarOpen) {
-        const appStyles = window.getComputedStyle(this.appContainer);
-        gsap.set([this.header, this.app], {
-          width: `${
-            window.innerWidth -
-            (this.leftSidebar.clientWidth +
-              parseInt(appStyles.paddingLeft) +
-              parseInt(appStyles.paddingRight))
+  headerOnResize() {
+    if (this.props.toggleFixedLeftSidebar && this.props.isLeftSidebarOpen) {
+      const appStyles = window.getComputedStyle(this.appContainer);
+      gsap.set([this.appContent], {
+        width: `${window.innerWidth -
+          (this.leftSidebar.clientWidth +
+            parseInt(appStyles.paddingLeft) +
+            parseInt(appStyles.paddingRight)
+          )
           }`,
-          marginLeft: `${this.leftSidebar.clientWidth}`,
-        });
-      }
-    });
+      });
+    }
   }
+
+  componentDidMount() {
+    this.resizeRef = () => this.headerOnResize()
+    window.addEventListener("resize", () => this.resizeRef());
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resizeRef)
+  }
+
   render() {
     return (
       <s.Container id="header">
