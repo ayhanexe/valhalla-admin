@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
-import { HellaCheckbox } from "../components/hella-components";
 import { LoginPageStyles as s } from "../components/styles";
 
 export class LoginPage extends Component {
