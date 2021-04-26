@@ -207,15 +207,20 @@ class LeftSidebar extends Component {
                   isLink: true,
                   to: "/pages/404",
                 },
-                // {
-                //   text: "Login Page",
-                //   isLink: true,
-                //   to: "/pages/login",
-                // },
+                {
+                  text: "Login Page",
+                  isLink: true,
+                  to: "/auth/login",
+                },
+                {
+                  text: "Register Page",
+                  isLink: true,
+                  to: "/auth/register",
+                },
               ]}
             />
-            
-            
+
+
           </s.LeftSidebarContent>
         </CustomScrollbar>
 

@@ -16,7 +16,6 @@ class HellaCheckbox extends Component {
 
   toggleCheckbox(target) {
     const point = this.utils.closest(target, ".hella-checkbox-point");
-    const parent = point.parentNode;
     const timeline = gsap.timeline();
 
     timeline.add([

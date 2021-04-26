@@ -16,3 +16,5 @@ export * as TutorialComponentStyles from "./tutorialComponent.styles";
 export * as CustomTableStyles from "./customTable.styles";
 export * as StyleUtils from "./util.styles";
 export * as NotFoundPageStyles from "./404.page.styles";
+export * as LoginPageStyles from "./loginPage.styles";
+export * as RegisterPageStyles from "./registerPage.styles";

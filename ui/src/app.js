@@ -7,12 +7,11 @@ import {
   TimeoutScreen,
   CustomScrollbar,
 } from "./components";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components/macro";
 import { ThemeService, FontService } from "./services";
 
 const HomePage = React.lazy(() => import("./pages/home.page")),
-  TestPage = React.lazy(() => import("./pages/test.page")),
   ValhallaChatPage = React.lazy(() => import("./pages/valhalla-chat.page")),
   FileSystemPage = React.lazy(() => import("./pages/fileSystem.page")),
   UIButtonsPage = React.lazy(() => import("./pages/ui.buttons.page")),
@@ -36,7 +35,9 @@ const HomePage = React.lazy(() => import("./pages/home.page")),
   TypographyPage = React.lazy(() => import("./pages/typography.page")),
   TablesStandartPage = React.lazy(() => import("./pages/tables.standart.page")),
   TablesPluginPage = React.lazy(() => import("./pages/tables.plugin.page")),
-  NotFoundPage = React.lazy(() => import("./pages/404.page"));
+  NotFoundPage = React.lazy(() => import("./pages/404.page")),
+  LoginPage = React.lazy(() => import("./pages/login.page")),
+  RegisterPage = React.lazy(() => import("./pages/register.page"));
 
 const themeService = new ThemeService();
 
@@ -51,7 +52,7 @@ const Container = styled.div`
   font-weight: ${(props) => String(props.$fontWeight).toLowerCase()};
   font-size: ${(props) => String(props.$fontSize).toLowerCase()};
   
-  ${({ theme }) => theme?.body ? {...theme?.body} : null}
+  ${({ theme }) => theme?.body ? { ...theme?.body } : null}
 `;
 
 const AppContent = styled.div`
@@ -59,17 +60,31 @@ const AppContent = styled.div`
   height: auto;
 `;
 
+
+
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.fontService = new FontService();
     this.fontService.init();
+    if (localStorage.getItem("valhalla-login") !== "true") {
+      this.props.history.push("/auth/login")
+    }
   }
   render() {
+    const DefaultContent = props => (
+      <>
+        <TimeoutScreen />
+        <LeftSidebar />
+        <RightSidebar />
+      </>
+    );
+
     return (
       <ThemeProvider
-        theme={Object(themeService.getTheme(this.props.currentTheme))}
+        theme={Object(themeService.getTheme(this.props.currentTheme))
+        }
       >
         <Container
           id="app-container"
@@ -77,55 +92,149 @@ class App extends Component {
           $fontWeight={this.fontService.safeFont(this.props.fontWeight)}
           $fontSize={this.props.fontSize}
         >
-          <TimeoutScreen />
-          <LeftSidebar />
           <CustomScrollbar>
             <AppContent id="app-content" className="px-4">
-              <Header />
               <React.Suspense fallback={<p>Loading...</p>}>
                 <Switch>
-                  <Route exact path="/" component={HomePage} />
-                  <Route path="/test" component={TestPage} />
-                  <Route path="/valhalla-chat" component={ValhallaChatPage} />
-                  <Route path="/file-system" component={FileSystemPage} />
-                  <Route path="/ui/accordion" component={UIAccordionPage} />
-                  <Route path="/ui/buttons" component={UIButtonsPage} />
-                  <Route path="/ui/cards" component={UICardsPage} />
-                  <Route path="/ui/alerts" component={UIAlertsPage} />
-                  <Route path="/ui/badge" component={UIBadgePage} />
-                  <Route path="/ui/breadcrumbs" component={UIBreadcrumbsPage} />
-                  <Route path="/ui/carousel" component={UICarouselPage} />
-                  <Route path="/ui/collapse" component={UICollapsePage} />
-                  <Route path="/ui/lists" component={UIListsPage} />
-                  <Route path="/ui/modals" component={UIModalsPage} />
-                  <Route path="/ui/navntab" component={UINavNTabPage} />
-                  <Route path="/ui/navbar" component={UINavbarPage} />
-                  <Route path="/ui/offcanvas" component={UIOffCanvasPage} />
-                  <Route path="/ui/progress-bars" component={UIProgressPage} />
-                  <Route path="/ui/scrollspy" component={UIScrollspyPage} />
-                  <Route path="/ui/spinners" component={UISpinnersPage} />
-                  <Route path="/ui/toasts" component={UIToastsPage} />
-                  <Route path="/ui/ratios" component={UIRatiosPage} />
-                  <Route path="/typography" component={TypographyPage} />
-                  <Route path="/pages/404" component={NotFoundPage} />
+                  <Route exact path="/" >
+                    <DefaultContent />
+                    <Header />
+                    <HomePage />
+                  </Route>
+                  <Route path="ui/valhalla-chat">
+                    <DefaultContent />
+                    <Header />
+                    <ValhallaChatPage />
+                  </Route>
+                  <Route path="ui/file-system" >
+                    <DefaultContent />
+                    <Header />
+                    <FileSystemPage />
+                  </Route>
+                  <Route path="ui/ui/accordion">
+                    <DefaultContent />
+                    <Header />
+                    <UIAccordionPage />
+                  </Route>
+                  <Route path="ui/ui/buttons">
+                    <DefaultContent />
+                    <Header />
+                    <UIButtonsPage />
+                  </Route>
+                  <Route path="ui/ui/cards">
+                    <DefaultContent />
+                    <Header />
+                    <UICardsPage />
+                  </Route>
+                  <Route path="ui/ui/alerts">
+                    <DefaultContent />
+                    <Header />
+                    <UIAlertsPage />
+                  </Route>
+                  <Route path="ui/ui/badge">
+                    <DefaultContent />
+                    <Header />
+                    <UIBadgePage />
+                  </Route>
+                  <Route path="ui/ui/breadcrumbs">
+                    <DefaultContent />
+                    <Header />
+                    <UIBreadcrumbsPage />
+                  </Route>
+                  <Route path="ui/ui/carousel">
+                    <DefaultContent />
+                    <Header />
+                    <UICarouselPage />
+                  </Route>
+                  <Route path="ui/ui/collapse">
+                    <DefaultContent />
+                    <Header />
+                    <UICollapsePage />
+                  </Route>
+                  <Route path="ui/ui/lists">
+                    <DefaultContent />
+                    <Header />
+                    <UIListsPage />
+                  </Route>
+                  <Route path="ui/ui/modals">
+                    <DefaultContent />
+                    <Header />
+                    <UIModalsPage />
+                  </Route>
+                  <Route path="ui/ui/navntab">
+                    <DefaultContent />
+                    <Header />
+                    <UINavNTabPage />
+                  </Route>
+                  <Route path="ui/ui/navbar">
+                    <DefaultContent />
+                    <Header />
+                    <UINavbarPage />
+                  </Route>
+                  <Route path="ui/ui/offcanvas">
+                    <DefaultContent />
+                    <Header />
+                    <UIOffCanvasPage />
+                  </Route>
+                  <Route path="ui/ui/progress-bars">
+                    <DefaultContent />
+                    <Header />
+                    <UIProgressPage />
+                  </Route>
+                  <Route path="ui/ui/scrollspy">
+                    <DefaultContent />
+                    <Header />
+                    <UIScrollspyPage />
+                  </Route>
+                  <Route path="ui/ui/spinners">
+                    <DefaultContent />
+                    <Header />
+                    <UISpinnersPage />
+                  </Route>
+                  <Route path="ui/ui/toasts">
+                    <DefaultContent />
+                    <Header />
+                    <UIToastsPage />
+                  </Route>
+                  <Route path="ui/ui/ratios">
+                    <DefaultContent />
+                    <Header />
+                    <UIRatiosPage />
+                  </Route>
+                  <Route path="ui/typography">
+                    <DefaultContent />
+                    <Header />
+                    <TypographyPage />
+                  </Route>
+                  <Route path="/pages/404">
+                    <NotFoundPage />
+                  </Route>
                   <Route
                     path="/tables/standart"
-                    component={TablesStandartPage}
-                  />
+                  >
+                    <DefaultContent />
+                    <Header />
+                    <TablesStandartPage />
+                  </Route>
                   <Route
                     path="/tables/plugin-tables"
-                    component={TablesPluginPage}
-                  />
+                  >
+                    <DefaultContent />
+                    <Header />
+                    <TablesPluginPage />
+                  </Route>
+                  <Route exact path="/auth/login" component={LoginPage} />
+                  <Route exact path="/auth/register" component={RegisterPage} />
                 </Switch>
               </React.Suspense>
             </AppContent>
           </CustomScrollbar>
-          <RightSidebar />
         </Container>
-      </ThemeProvider>
+      </ThemeProvider >
     );
   }
 }
 
 const mapStateToProps = (state) => state;
-export default connect(mapStateToProps)(App);
+const ReduxApp = connect(mapStateToProps)(App);
+export default withRouter(ReduxApp);
